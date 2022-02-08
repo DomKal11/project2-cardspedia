@@ -1,0 +1,27 @@
+
+<h2>Create a game</h2>
+
+<form action="/create-game" method="post">
+    <label for="gameName">Name of the game:
+        <input type="string" name="gameName"/>
+    </label> 
+    <br>
+    <label for="numberOfPlayers">How many players are needed:
+        <input type="number" name="numberOfPlayers" min="1"/>
+    </label>
+    <br>
+    <label for="numberOfDecks">How many decks of cards are required:
+        <input type="number" name="numberOfDecks" min="1"/>
+    </label>
+    <br>
+    <label for="instructions">Instructions:
+        <input type="string" name="instructions"/>
+    </label>
+    <br>
+    <label for="rules">Rules:
+        <input type="string" name="rules"/>
+    </label>
+    <br>
+    <input type="hidden" name="createdBy" value="{{user._id}}"/>
+    <button type="submit">Submit</button>
+</form>
