@@ -3,23 +3,25 @@
 
 <form action="/create-game" method="post">
     <label for="gameName">Name of the game:
-        <input type="string" name="gameName"/>
+        <input type="string" name="gameName" class="game-medium-text-input"/>
     </label> 
     <br>
     <label for="numberOfPlayers">How many players are needed:
-        <input type="number" name="numberOfPlayers" min="1"/>
+        <input type="number" name="numberOfPlayers" min="1" class="game-number-input"/>
     </label>
     <br>
     <label for="numberOfDecks">How many decks of cards are required:
-        <input type="number" name="numberOfDecks" min="1"/>
+        <input type="number" name="numberOfDecks" min="1" class="game-number-input"/>
     </label>
     <br>
-    <label for="instructions">Instructions:
-        <input type="string" name="instructions"/>
+    <label for="instructions">How to play:
+        <br>
+        <textarea type="text" name="instructions" class="game-large-text-input"></textarea>
     </label>
     <br>
     <label for="rules">Rules:
-        <input type="string" name="rules"/>
+        <br>
+        <textarea name="rules" class="game-large-text-input"></textarea>
     </label>
     <br>
     <input type="hidden" name="createdBy" value="{{user._id}}"/>

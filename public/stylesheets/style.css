@@ -61,4 +61,15 @@ h1 {
   }
 }
 
+.game-large-text-input {
+  width: 500px;
+  height: 150px;
+}
 
+.game-medium-text-input {
+  width: 340px;
+}
+
+.game-number-input {
+  width: 50px;
+}
