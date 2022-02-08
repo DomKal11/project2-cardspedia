@@ -1,0 +1,27 @@
+
+<h2>Update game</h2>
+
+<form action="/update-game/{{game._id}}" method="post">
+    <label for="gameName">Name of the game:
+        <input type="string" name="gameName" value="{{game.gameName}}"/>
+    </label> 
+    <br>
+    <label for="numberOfPlayers">How many players are needed:
+        <input type="number" name="numberOfPlayers" min="1" value="{{game.numberOfPlayers}}"/>
+    </label>
+    <br>
+    <label for="numberOfDecks">How many decks of cards are required:
+        <input type="number" name="numberOfDecks" min="1" value="{{game.numberOfDecks}}"/>
+    </label>
+    <br>
+    <label for="instructions">Instructions:
+        <input type="string" name="instructions" value="{{game.instructions}}"/>
+    </label>
+    <br>
+    <label for="rules">Rules:
+        <input type="string" name="rules" value="{{game.rules}}"/>
+    </label>
+    <br>
+    <button type="submit">Save changes</button>
+</form>
+
