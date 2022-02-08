@@ -1,15 +1,15 @@
 {{#if userInSession}}
-    <h2>Welcome, {{ userInSession.username }}!</h2>
-    <p>Profile created: {{ userInSession.createdAt }}</p>
-    <p>Date of birth: {{ userInSession.birthdate }}</p>
-    <p>About me: {{ userInSession.about }}</p>
-    <a href="/user/{{userInSession._id}}/edit" class="btn btn-primary">Edit</a> 
-    <form action="/user/{{userInSession._id}}/delete" method="POST">
-      <button>Delete</button>
-    </form>
-    <button>
-        <a href="/userProfile">Reload the page</a>
-    </button>
+  <h2>Welcome, {{userInSession.username}}!</h2>
+  <p>Profile created: {{userInSession.createdAt}}</p>
+  <p>Date of birth: {{userInSession.birthdate}}</p>
+  <p>About me: {{userInSession.about}}</p>
+  <a href="/user/{{userInSession._id}}/edit" class="btn btn-primary">Edit</a>
+  <form action="/user/{{userInSession._id}}/delete" method="POST">
+    <button>Delete</button>
+  </form>
+  <button>
+    <a href="/userProfile">Reload the page</a>
+  </button>
 {{else}}
-    <p>Still no logged in user, sorry!</p>
+  <p>Still no logged in user, sorry!</p>
 {{/if}}

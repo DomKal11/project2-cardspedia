@@ -11,7 +11,7 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // require custom middleware for protected routes
-const { isLoggedIn, isLoggedOut } = require('../middleware/route-guards.js');
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guards.js");
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("user/create");
@@ -62,9 +62,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return User.create({
           username,
           password: hashedPassword,
-          birthdate, 
-          about, 
-          admin 
+          birthdate,
+          about,
+          admin,
         });
       })
       .then((user) => {
