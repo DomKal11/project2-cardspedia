@@ -4,8 +4,8 @@ const { Schema, model } = require("mongoose");
 const gameSchema = new Schema(
   {
     gameName: String,
-    numberOfPlayers: number,
-    numberOfDecks: number,
+    numberOfPlayers: Number,
+    numberOfDecks: Number,
     instructions: String,
     rules: String,
     createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
