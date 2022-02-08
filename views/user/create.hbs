@@ -9,12 +9,12 @@
 
     <label>
       Birthdate
-      <input type="date" name="birthdate">
+      <input type="date" name="birthdate" />
     </label>
 
     <label>
       About me
-      <textarea  name="about" rows="4" cols="50"></textarea>
+      <textarea name="about" rows="4" cols="50"></textarea>
     </label>
 
     <label>
@@ -23,8 +23,8 @@
     </label>
 
     <button type="submit">Create an account</button>
-  {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
   </form>
 </div>

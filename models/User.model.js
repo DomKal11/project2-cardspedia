@@ -5,13 +5,13 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique: true
+      unique: true,
     },
     birthdate: Date,
     about: String,
     admin: {
       type: Boolean,
-      default: false
+      default: false,
     },
     password: String,
     games: [{ type: Schema.Types.ObjectId, ref: "Game" }],
