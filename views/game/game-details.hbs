@@ -1,2 +1,13 @@
 
 <H2>Game Details Page</H2>
+
+
+<p><i>Current game id is {{game._id}}</i></p>
+
+<a href="/update-game/{{game._id}}">Edit this game</a>
+<br>
+<br>
+<form action="/delete-game/{{game._id}}" method="post">
+    <button type="submit">Delete this game</button>
+</form>
+

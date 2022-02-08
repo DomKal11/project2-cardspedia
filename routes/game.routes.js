@@ -5,10 +5,12 @@ const Game = require("../models/Game.model");
 
 const {isLoggedIn} = require("../middleware/route-guards")
 
+
+//spades (♤), diamonds (♢), clubs (♧) and hearts (♥) --useful for card suits
+
 //GET route for create-game
-//router.get('/create-game', isLoggedIn, (req,res,next) => {
-router.get('/create-game', (req,res,next) => {
-    User.findById(req.session.user.id)
+router.get('/create-game', isLoggedIn, (req,res,next) => {
+    User.findById(req.session.user)
     .then((returnedUser) => {
         res.render("game/create-game", {user: returnedUser});
     })
@@ -19,18 +21,57 @@ router.get('/create-game', (req,res,next) => {
 router.post('/create-game', (req,res,next) => {
     const { gameName, numberOfPlayers, numberOfDecks, instructions, rules, createdBy } = req.body;
 
-    Game.create({gameName, numberOfPlayers, numberOfDecks, instructions, rules }) //need to add created by once user CRUD setup
+    Game.create({gameName, numberOfPlayers, numberOfDecks, instructions, rules, createdBy }) 
     .then((newGame) => {
-       return User.findByIdAndUpdate(createdBy, { $push: {games: newGame.createdBy} });
+       User.findByIdAndUpdate(createdBy, { $push: {games: newGame._id} });
+       res.redirect(`/game-details/${newGame._id}`);
     })
-    //.then((newGame) => res.redirect(`/game-details/${newGame._id}`))
-    .then(() => res.redirect('/game-details'))
     .catch((err) => console.log(`Err while creating game: ${err}`));
 });
 
 //GET route for game details
-router.get('/game-details', (req,res,next) => {
-    res.render('game/game-details');
+router.get('/game-details/:gameId', (req,res,next) => {
+    const { gameId } = req.params;
+
+    Game.findById(gameId)
+    .then((gameDetails) => {
+        res.render('game/game-details', {game: gameDetails});
+    })
+    .catch((err) => console.log(`Err while creating game: ${err}`));    
+})
+
+//GET route for update game details
+router.get('/update-game/:gameId', isLoggedIn, (req, res, next) => {
+    const { gameId } = req.params;
+
+    Game.findById(gameId)
+    .then((gameDetails) => res.render('game/update-game', {game: gameDetails}))
+    .catch((err) => console.log(`Err while rendering update-game page: ${err}`));    
+})
+
+//POST route for editing game details
+router.post('/update-game/:gameId', isLoggedIn, (req,res,next) => {
+    console.log(req.params);
+    const {gameId} = req.params;
+    const {gameName, numberOfPlayers, numberOfDecks, instructions, rules} = req.body;
+
+    Game.findByIdAndUpdate(gameId, {gameName, numberOfPlayers, numberOfDecks, instructions, rules }, { new: true })
+    .then((gameDetails) => res.redirect(`/game-details/${gameDetails._id}`))
+    .catch((err) => console.log(`Err while updating game: ${err}`));    
+})
+
+//POST route for deleting a game
+router.post('/delete-game/:gameId', (req,res,next) => {
+    const {gameId} = req.params;
+    console.log('called ok');
+    Game.findByIdAndRemove(gameId)
+    .then(() => res.redirect('/games-library'))
+    .catch((err) => console.log(`Err while removing game: ${err}`));    
+})
+
+//GET route for Games Library Page
+router.get('/games-library', (req,res,next) => {
+    res.render('game/games-library');
 })
 
 module.exports = router;
