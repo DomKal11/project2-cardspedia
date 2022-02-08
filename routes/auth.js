@@ -14,7 +14,7 @@ const User = require("../models/User.model");
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guards.js');
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+  res.render("user/create");
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
@@ -23,11 +23,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
   if (!username) {
     return res
       .status(400)
-      .render("auth/signup", { errorMessage: "Please provide your username." });
+      .render("user/create", { errorMessage: "Please provide your username." });
   }
 
   if (password.length < 8) {
-    return res.status(400).render("auth/signup", {
+    return res.status(400).render("user/create", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
@@ -50,7 +50,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("user/create", { errorMessage: "Username already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -73,23 +73,23 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("auth/signup", { errorMessage: error.message });
+            .render("user/create", { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
+          return res.status(400).render("user/create", {
             errorMessage:
               "Username need to be unique. The username you chose is already in use.",
           });
         }
         return res
           .status(500)
-          .render("auth/signup", { errorMessage: error.message });
+          .render("user/create", { errorMessage: error.message });
       });
   });
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
+  res.render("user/login");
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
@@ -98,13 +98,13 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   if (!username) {
     return res
       .status(400)
-      .render("auth/login", { errorMessage: "Please provide your username." });
+      .render("user/login", { errorMessage: "Please provide your username." });
   }
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
   if (password.length < 8) {
-    return res.status(400).render("auth/login", {
+    return res.status(400).render("user/login", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
@@ -116,7 +116,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       if (!user) {
         return res
           .status(400)
-          .render("auth/login", { errorMessage: "Wrong credentials." });
+          .render("user/login", { errorMessage: "Wrong credentials." });
       }
 
       // If user is found based on the username, check if the in putted password matches the one saved in the database
@@ -124,7 +124,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         if (!isSamePassword) {
           return res
             .status(400)
-            .render("auth/login", { errorMessage: "Wrong credentials." });
+            .render("user/login", { errorMessage: "Wrong credentials." });
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
