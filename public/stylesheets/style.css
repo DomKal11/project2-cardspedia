@@ -55,9 +55,19 @@ h1 {
   text-shadow: 0px 0px 3px gray, 0px 0px 5px gray;
 }
 
+@media (min-width: 768px) {
+  .area {
+    font-size: 6.5em;
+  }
+}
+@media (max-width: 768px) {
+  .area {
+    font-size: 3.5em;
+  }
+}
+
 .area {
   text-align: center;
-  font-size: 6.5em;
   color: black;
   letter-spacing: -7px;
   font-weight: 700;
