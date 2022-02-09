@@ -4,28 +4,96 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" type="image/png" href="images/logo.svg"/>
+    <link rel="icon" type="image/png" href="images/logo.svg" />
     <title>{{title}}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">
-    <img src="/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-    Cardspedia ♢♧♡♤
-  </a>
-  <span class="navbar-text hide-when-logged">
-      <a class="navbar-brand" href="/signup">Sign Up</a>
-      <a class="navbar-brand" href="/login">Log In</a>
-      <a class="navbar-brand" href="/userProfile">Profile</a>
-      <a class="navbar-brand" href="/logout">Logout</a>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/images/logo.svg"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+      Cardspedia ♢♧♡♤
+    </a>
+    <span class="navbar-text hide-when-logged">
+      {{#if session.user}}
+        <a class="navbar-brand" href="/userProfile">Profile</a>
+        <a class="navbar-brand" href="/logout">Logout</a>
+      {{else}}
+        <a class="navbar-brand" href="/signup">Sign Up</a>
+        <a class="navbar-brand" href="/login">Log In</a>
+      {{/if}}
     </span>
-</nav>
+  </nav>
   <body>
-
+    
     {{{body}}}
-
+    
     <script src="/js/script.js"></script>
   </body>
-
+  <div class="footer-dark">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 item">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Web design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Hosting</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-3 item">
+            <h3>About</h3>
+            <ul>
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 item text">
+            <h3>Cardspedia</h3>
+            <p>An online encyclopaedia of all the worlds card games and their
+              rules Lots of people around the world play different card games.
+              Some of them are the same rules with different names, some of them
+              are the same name with different rules and some of them are family
+              traditions that no one else knows about. Cardspedia is the place
+              where all of these games come together to be shared and preserved
+              for everyone to enjoy.
+            </p>
+          </div>
+          <div class="col item social"><a
+              href="https://github.com/DomKal11/project2-cardspedia"
+            ><i class="icon ion-social-github"></i></a><a href="#"><i
+                class="icon ion-social-twitter"
+              ></i></a><a href="#"><i
+                class="icon ion-social-snapchat"
+              ></i></a><a href="#"><i
+                class="icon ion-social-instagram"
+              ></i></a></div>
+        </div>
+        <p class="copyright">Cardspedia © 2022</p>
+      </div>
+    </footer>
+  </div>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+  ></script>
 </html>

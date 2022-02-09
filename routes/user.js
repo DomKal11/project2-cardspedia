@@ -15,6 +15,25 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     );
 });
 
+router.get('/users/:page', (req, res) => {
+  const { page } = req.params;
+
+  let length;
+  User.find()
+  .then(usersFromDB => {
+    return length = usersFromDB.length;
+  })
+  User.find()
+  .skip( (page-1)*3 )
+  .limit( 3 )
+  .sort( '-createdAt' )
+    .then(usersFromDB => {
+      console.log(length);
+      res.render('user/list.hbs', { users: usersFromDB, length });
+    })
+    .catch(err => console.log(`Error while getting the movies from the DB: ${err}`));
+});
+
 router.get("/user/:id/edit", isLoggedIn, (req, res) => {
   const { id } = req.params;
 
