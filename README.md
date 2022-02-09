@@ -41,29 +41,29 @@ Once logged in the user has the added benefit of being able to add games that th
 <!--USER STORIES-->
 ### User Stories
 
-Personas:
-<b>Michael:</b> 60 years old. From time to time, he plays a card game during a family visit. He needs to display the chosen game and study the rules, or show them to others. He doesn't want to add games, he doesn't even want to register, he only plays occasionally.
+Personas:<br />
+<b>Michael:</b> 60 years old. From time to time, he plays a card game during a family visit. He needs to display the chosen game and study the rules, or show them to others. He doesn't want to add games, he doesn't even want to register, he only plays occasionally.<br />
 Michael is an unauthenticated <b>viewer</b>. We need to create views to display the required content without registration and login.
-<b>Jennifer:</b> An experienced card games player. She likes to learn new games and also contributes with her own games. She wants to contribute, discuss and also vote for specific games. She also wants to see how popular the games she added are.
-Jennifer is an authenticated <b>contributor</b>. She must be able to view her games after logging in, to see their popularity. She must also be able to comment on the games of others and rate them.
+<b>Jennifer:</b> An experienced card games player. She likes to learn new games and also contributes with her own games. She wants to contribute, discuss and also vote for specific games. She also wants to see how popular the games she added are.<br />
+Jennifer is an authenticated <b>contributor</b>. She must be able to view her games after logging in, to see their popularity. She must also be able to comment on the games of others and rate them.<br />
 <b>Tom: </b> In the attic of his grandparents' house, he found a collection of old card games that he would like to share with others. He is not a frequent player, but he would like to share the finding.
-Tom is also a contributor. He will need to register to add games.
+Tom is also a contributor. He will need to register to add games.<br />
 <b>Dominik:</b> He is the site administrator, ensuring that the site structure is maintained and that no one breaks the rules or submits inappropriate content.
-Dominik is an <b>administrator</b>, he has all the rights and options to modify the site.
+Dominik is an <b>administrator</b>, he has all the rights and options to modify the site.<br />
 
-Stories:
-As a viewer, I want to understand what the site is for when I first land on it so I know what I can find there
-As a viewer, I want to see what games are on the site so I can look at their rules and play them myself offline 
-As a viewer, I want to create an account so I can become a contributor and vote and comment on games etc
-As a contributor, I can create, read, update and delete games
-As a contributor, I can vote and comment on games
-As a contributor, I can manage my user profile including seeing the games I have created
-As an administrator, I can collaborate on the creation, modification, deployment general administration of the site
-As an administrator, I can delete user accounts so I can deal with spammers etc
-As a contributor, I can save games to my favourites so I can find them on my user profile page later
-As a contributor, I can only edit/delete my own games, but I can comment on others
-As a Viewer I can get a random game suggested to me so I can try it out offline
-As a Viewer I can see which games are ranked the highest by number of votes 
+Stories:<br />
+As a viewer, I want to understand what the site is for when I first land on it so I know what I can find there<br />
+As a viewer, I want to see what games are on the site so I can look at their rules and play them myself offline <br />
+As a viewer, I want to create an account so I can become a contributor and vote and comment on games etc<br />
+As a contributor, I can create, read, update and delete games<br />
+As a contributor, I can vote and comment on games<br />
+As a contributor, I can manage my user profile including seeing the games I have created<br />
+As an administrator, I can collaborate on the creation, modification, deployment general administration of the site<br />
+As an administrator, I can delete user accounts so I can deal with spammers etc<br />
+As a contributor, I can save games to my favourites so I can find them on my user profile page later<br />
+As a contributor, I can only edit/delete my own games, but I can comment on others<br />
+As a Viewer I can get a random game suggested to me so I can try it out offline<br />
+As a Viewer I can see which games are ranked the highest by number of votes <br />
 
 
 <!--TECHNOLOGIES USED-->
@@ -96,7 +96,8 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 
 <!--Future Work-->
-###Future Work
+
+### Future Work
 ...to be added
 
 
@@ -107,8 +108,9 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 <!--TEAM MEMBERS-->
 ### Team members
-*Dominik Kaloc
-*Chris Fagg
+* Dominik Kaloc
+* Chris Fagg
+
 
 
 <!-- ACKNOWLEDGMENTS -->
