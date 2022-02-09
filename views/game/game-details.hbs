@@ -3,18 +3,17 @@
 
 <div class="game-details">
     <div id="players-and-decks">
-        Minimum players:{{game.numberOfPlayers}}
-        Number of decks: {{game.numberOfDecks}}
+        <div>Minimum players:{{game.numberOfPlayers}}</div>
+        <div>Number of decks: {{game.numberOfDecks}}</div>
         <div class="vote-box">
             <a href="/game/{{game._id}}/vote">
                 <p>{{game.numberOfVotes}}</p>
                 <img class="vote-arrow-img" src="/images/arrow-vote.png">
             </a>
-            <!--<form action="/game/{{game._id}}/vote" method="post">
-                
-                <button type="submit">{{game.numberOfVotes}}</button>
-            </form>-->
         </div>
+        <form action="/game/{{game._id}}/add-to-favourites">
+            <button type="submit" class="btn-add-to-favourites">Add to favourites</button>
+        </form>
     </div>
     <h4>How to Play:</h4>
     <p>{{game.instructions}}</p>
