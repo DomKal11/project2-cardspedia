@@ -10,4 +10,31 @@
 <form action="/delete-game/{{game._id}}" method="post">
     <button type="submit">Delete this game</button>
 </form>
+<br>
+<br>
+
+<h5><u>Comments</u></h5>
+{{#unless game.comments}}
+<p>No comments yet!</p>
+{{/unless}}
+
+{{#each game.comments}}
+    <div class="comment-box">        
+        <i>{{this.createdAt}}</i>
+        <p><b>{{this.author.username}}:</b> {{this.content}}</p>
+        <form id="comment-form-{{this._id}}" action="/comment/{{../game._id}}/{{this._id}}/edit" type="post"></form>
+        <!--<a class="game-comment-link" href="/comment/{{../game._id}}/{{this._id}}/edit">edit</a>-->
+        <a class="game-comment-link" href="/comment/{{../game._id}}/{{this._id}}/delete">delete</a>    
+    </div>
+{{/each}}
+
+<br>
+
+<h5>Comment on this game</h5>
+<form action="/comment/{{game._id}}/add" method="post">
+    <textarea name="content" class="game-large-text-input"></textarea>
+    <!--<input type="hidden" name="author" value="<some user>"/>-->
+    <br>
+    <button type="submit">Add comment</button>
+</form>
 

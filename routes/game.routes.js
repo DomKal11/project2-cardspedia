@@ -3,7 +3,7 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const Game = require("../models/Game.model");
 
-const {isLoggedIn} = require("../middleware/route-guards")
+const {isLoggedIn} = require("../middleware/route-guards");
 
 
 //spades (♤), diamonds (♢), clubs (♧) and hearts (♥) --useful for card suits
@@ -34,11 +34,20 @@ router.get('/game-details/:gameId', (req,res,next) => {
     const { gameId } = req.params;
 
     Game.findById(gameId)
+    .populate('comments') //this part is to return both the comments and username of the commentor 
+    .populate({
+        path: 'comments',
+        populate: {
+            path: 'author',
+            model: 'User'
+        }
+    })
     .then((gameDetails) => {
         res.render('game/game-details', {game: gameDetails});
     })
     .catch((err) => console.log(`Err while creating game: ${err}`));    
 })
+
 
 //GET route for update game details
 router.get('/update-game/:gameId', isLoggedIn, (req, res, next) => {
