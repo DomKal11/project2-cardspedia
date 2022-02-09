@@ -3,27 +3,29 @@
   <source src="../movie/background.mp4" type="video/mp4" />
 </video>
 <div class="container h-100">
-<div class="formtile">
+  <div class="formtile">
     <div class="col-md-3 formbg">
       {{#if userInSession}}
       <h2>Welcome, <b>{{userInSession.username}}</b>!</h2>
       {{#if userInSession.admin}}You are an <b>administrator.</b>{{/if}}
-      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}" onerror="this.src='../images/default-user.png'">
-      <p><b>Profile created:</b> {{userInSession.createdAt}}</p>
-  <p><b>Date of birth:</b> {{userInSession.birthdate}}</p>
-  <p><b>About me:</b> {{userInSession.about}}</p>
+      <div class="profilepic-bg"><a href="/changeUserPic">
+          <img src="{{userInSession.picture}}" class="card-img-top profilepic" alt="{{userInSession.username}}"
+            onerror="this.src='../images/default-user.png'">
+        </a></div>
+      <p><b>Profile created:</b> {{dateFormat userInSession.createdAt "dddd, MMMM Do YYYY, h:mm:ss a"}}</p>
+      <p><b>Date of birth:</b> {{dateFormat userInSession.birthdate "dddd, MMMM Do YYYY"}}</p>
+      <p><b>About me:</b> {{userInSession.about}}</p>
 
-<div class="row"><a class="button-main" href="/user/{{userInSession._id}}/edit" class="btn btn-primary"><span>Edit</span></a>
-<form action="/user/{{userInSession._id}}/delete" method="POST"></form>
+      <div class="row justify-content-center"><a class="button-main" href="/user/{{userInSession._id}}/edit"
+          class="btn btn-primary"><span>Edit</span></a>
+        <form action="/user/{{userInSession._id}}/delete" method="POST"></form>
         <div align="center"><button class="button-main" type="submit"><span>Delete</span></button></div>
         </form>
-        </div>
-<div>
-</div>
+      </div>
       </form>
       {{else}}
-  <p>Still no logged in user, sorry!</p>
-{{/if}}
+      <p>Still no logged in user, sorry!</p>
+      {{/if}}
     </div>
   </div>
 </div>

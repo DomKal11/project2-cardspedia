@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const User = require("../models/User.model");
 
+const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guards.js");
 
 router.get("/userProfile", isLoggedIn, (req, res) => {
@@ -12,6 +13,24 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     .then((userInSession) => res.render("user/profile", { userInSession }))
     .catch((error) =>
       console.log(`Error while getting a single movie for edit: ${error}`)
+    );
+});
+
+router.get("/changeUserPic", isLoggedIn, (req, res) => {
+  const userId = req.session.user._id;
+  User.findById(userId)
+    .then((userInSession) => res.render("user/change-picture", { userInSession }))
+    .catch((error) =>
+      console.log(`Error while getting a single movie for edit: ${error}`)
+    );
+});
+
+router.post("/changeUserPic/:id", isLoggedIn, fileUploader.single('profile-pic'), (req, res) => {
+  const { id } = req.params;
+  User.findByIdAndUpdate(id, { picture: req.file.path }, { new: true })
+    .then(() => res.redirect(`/userProfile`))
+    .catch((error) =>
+      console.log(`Error while updating a single movie: ${error}`)
     );
 });
 
