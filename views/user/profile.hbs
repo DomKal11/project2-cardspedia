@@ -12,6 +12,8 @@
       <p><b>Profile created:</b> {{userInSession.createdAt}}</p>
   <p><b>Date of birth:</b> {{userInSession.birthdate}}</p>
   <p><b>About me:</b> {{userInSession.about}}</p>
+  <p><b>My games:</b></p> <!--if I've created any-->
+  <p><b>Favourites:</b></p> <!--if I've favoruited any-->
 
 <div class="row"><a class="button-main" href="/user/{{userInSession._id}}/edit" class="btn btn-primary"><span>Edit</span></a>
 <form action="/user/{{userInSession._id}}/delete" method="POST"></form>

@@ -178,6 +178,11 @@ h1 {
 #players-and-decks {
   display: flex;
   align-items: center;
+  margin: 10px 10px 10px 0px;
+}
+
+#players-and-decks div {
+  margin: 10px 10px 10px 0px;
 }
 
 .vote-box {
@@ -199,6 +204,10 @@ h1 {
 .vote-arrow-img {
   height: 30px;
   width: 37px;
+}
+
+.btn-add-to-favourites {
+  margin-top: 20px;
 }
 
 .footer-dark {

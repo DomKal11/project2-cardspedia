@@ -91,12 +91,22 @@ router.get('/game-library', (req,res,next) => {
 //GET route for voting for game
 router.get("/game/:gameId/vote", isLoggedIn, (req,res,next) => {
     const {gameId} = req.params;
-    let votesCount = 12;
-
+    
     Game.findByIdAndUpdate(gameId, { $inc: { numberOfVotes: 1 }}, {new: true}) //increment by one vote each time it is pressed
     .then(() => res.redirect(`/game-details/${gameId}`))
     .catch((err) => console.log(`Err while updating votes: ${err}`)); 
 })
+
+
+//GET route for add to favourites
+router.get("/game/:gameId/add-to-favourites", isLoggedIn, (req,res,next) => {
+    const {gameId} = req.params;
+      
+    User.findByIdAndUpdate(req.session.user._id, { $push: {favourites: gameId} })
+    .then(() => res.redirect(`/game-details/${gameId}`))
+    .catch((err) => console.log(`Err while adding game to favourites: ${err}`)); 
+})
+
 
 
 
