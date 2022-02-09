@@ -4,7 +4,8 @@
 <div class="formtile">
     <div class="col-md-3 formbg">
       {{#if userInSession}}
-      <h2>Welcome, {{userInSession.username}}!</h2>
+      <h2>Welcome, <b>{{userInSession.username}}</b>!</h2>
+      {{#if userInSession.admin}}You are an <b>administrator.</b>{{/if}}
       <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}">
       <p><b>Profile created:</b> {{userInSession.createdAt}}</p>
   <p><b>Date of birth:</b> {{userInSession.birthdate}}</p>
@@ -15,7 +16,8 @@
         <div align="center"><button class="button-main" type="submit"><span>Delete</span></button></div>
         </form>
         </div>
-
+<div>
+</div>
       </form>
       {{else}}
   <p>Still no logged in user, sorry!</p>

@@ -15,7 +15,8 @@
     Cardspedia ♢♧♡♤
   </a>
   <span class="navbar-text hide-when-logged">
-      <a class="navbar-brand" href="/signup">Sign Up</a>
+     {{#if session.user}}
+     <a class="navbar-brand" href="/signup">Sign Up</a>{{/if}}
       <a class="navbar-brand" href="/login">Log In</a>
       <a class="navbar-brand" href="/userProfile">Profile</a>
       <a class="navbar-brand" href="/logout">Logout</a>
