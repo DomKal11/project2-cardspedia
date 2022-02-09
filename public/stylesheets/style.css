@@ -175,6 +175,32 @@ h1 {
   width: 100%;
 }
 
+#players-and-decks {
+  display: flex;
+  align-items: center;
+}
+
+.vote-box {
+  position: relative;
+  text-align: center;
+  margin-left: 25px;
+}
+
+.vote-box p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.vote-arrow-img {
+  height: 30px;
+  width: 37px;
+}
+
 .footer-dark {
   padding:50px 0;
   color:#f0f9ff;
@@ -284,3 +310,4 @@ h1 {
     z-index:1000;
     position:relative;
     }
+
