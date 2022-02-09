@@ -215,6 +215,41 @@ h1 {
   width: 100%;
 }
 
+#players-and-decks {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px 10px 0px;
+}
+
+#players-and-decks div {
+  margin: 10px 10px 10px 0px;
+}
+
+.vote-box {
+  position: relative;
+  text-align: center;
+  margin-left: 25px;
+}
+
+.vote-box p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.vote-arrow-img {
+  height: 30px;
+  width: 37px;
+}
+
+.btn-add-to-favourites {
+  margin-top: 20px;
+}
+
 .footer-dark {
   z-index:1000;
   position:relative;
@@ -326,3 +361,4 @@ h1 {
     z-index:1000;
     position:relative;
     }
+

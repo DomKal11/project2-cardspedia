@@ -6,7 +6,7 @@ const Game = require("../models/Game.model");
 const {isLoggedIn} = require("../middleware/route-guards");
 
 
-//spades (♤), diamonds (♢), clubs (♧) and hearts (♥) --useful for card suits
+//spades (♤), diamonds (♢), clubs (♧) and hearts (♡) --useful for card suits
 
 //GET route for create-game
 router.get('/create-game', isLoggedIn, (req,res,next) => {
@@ -79,13 +79,35 @@ router.post('/delete-game/:gameId', (req,res,next) => {
     const {gameId} = req.params;
     console.log('called ok');
     Game.findByIdAndRemove(gameId)
-    .then(() => res.redirect('/games-library'))
+    .then(() => res.redirect('/game-library'))
     .catch((err) => console.log(`Err while removing game: ${err}`));    
 })
 
 //GET route for Games Library Page
-router.get('/games-library', (req,res,next) => {
-    res.render('game/games-library');
+router.get('/game-library', (req,res,next) => {
+    res.render('game/game-library');
 })
+
+//GET route for voting for game
+router.get("/game/:gameId/vote", isLoggedIn, (req,res,next) => {
+    const {gameId} = req.params;
+    
+    Game.findByIdAndUpdate(gameId, { $inc: { numberOfVotes: 1 }}, {new: true}) //increment by one vote each time it is pressed
+    .then(() => res.redirect(`/game-details/${gameId}`))
+    .catch((err) => console.log(`Err while updating votes: ${err}`)); 
+})
+
+
+//GET route for add to favourites
+router.get("/game/:gameId/add-to-favourites", isLoggedIn, (req,res,next) => {
+    const {gameId} = req.params;
+      
+    User.findByIdAndUpdate(req.session.user._id, { $push: {favourites: gameId} })
+    .then(() => res.redirect(`/game-details/${gameId}`))
+    .catch((err) => console.log(`Err while adding game to favourites: ${err}`)); 
+})
+
+
+
 
 module.exports = router;
