@@ -96,6 +96,7 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 
 <!--Future Work-->
+
 ### Future Work
 ...to be added
 
@@ -109,6 +110,7 @@ All models have timsetamps to enable createdAt and updatedAt properties
 ### Team members
 * Dominik Kaloc
 * Chris Fagg
+
 
 
 <!-- ACKNOWLEDGMENTS -->
