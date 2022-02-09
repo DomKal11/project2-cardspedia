@@ -1,15 +1,25 @@
-{{#if userInSession}}
-  <h2>Welcome, {{userInSession.username}}!</h2>
-  <p>Profile created: {{userInSession.createdAt}}</p>
-  <p>Date of birth: {{userInSession.birthdate}}</p>
-  <p>About me: {{userInSession.about}}</p>
-  <a href="/user/{{userInSession._id}}/edit" class="btn btn-primary">Edit</a>
-  <form action="/user/{{userInSession._id}}/delete" method="POST">
-    <button>Delete</button>
-  </form>
-  <button>
-    <a href="/userProfile">Reload the page</a>
-  </button>
-{{else}}
+<video autoplay loop muted id="background">
+  <source src="../movie/background.mp4" type="video/mp4" />
+</video>
+<div class="formtile">
+    <div class="col-md-3 formbg">
+      {{#if userInSession}}
+      <h2>Welcome, {{userInSession.username}}!</h2>
+      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}">
+      <p><b>Profile created:</b> {{userInSession.createdAt}}</p>
+  <p><b>Date of birth:</b> {{userInSession.birthdate}}</p>
+  <p><b>About me:</b> {{userInSession.about}}</p>
+
+<div class="row"><a class="button-main" href="/user/{{userInSession._id}}/edit" class="btn btn-primary"><span>Edit</span></a>
+<form action="/user/{{userInSession._id}}/delete" method="POST"></form>
+        <div align="center"><button class="button-main" type="submit"><span>Delete</span></button></div>
+        </form>
+        </div>
+
+      </form>
+      {{else}}
   <p>Still no logged in user, sorry!</p>
 {{/if}}
+    </div>
+  </div>
+</div>

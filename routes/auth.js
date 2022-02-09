@@ -11,13 +11,14 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // require custom middleware for protected routes
+const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guards.js");
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("user/create");
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, fileUploader.single('profile-pic'), (req, res) => {
   const { username, password, birthdate, about, admin } = req.body;
 
   if (!username) {
@@ -65,6 +66,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           birthdate,
           about,
           admin,
+          picture: req.file.path
         });
       })
       .then((user) => {
