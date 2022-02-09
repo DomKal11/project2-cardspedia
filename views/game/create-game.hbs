@@ -1,34 +1,47 @@
-
 <h2>Create a game</h2>
 
 <form action="/create-game" method="post">
-    {{!-- only shows if user errors in completing form properly --}}
-    {{#if errorMessage}}
-      <p class="gameFormErrorMessage">{{errorMessage}}</p>
-    {{/if}}
+  {{! only shows if user errors in completing form properly }}
+  {{#if errorMessage}}
+    <p class="gameFormErrorMessage">{{errorMessage}}</p>
+  {{/if}}
 
-    <label for="gameName">Name of the game:
-        <input type="string" name="gameName" class="game-medium-text-input"/>
-    </label> 
-    <br>
-    <label for="numberOfPlayers">Minimum number of players needed:
-        <input type="number" name="numberOfPlayers" min="1" class="game-number-input"/>
-    </label>
-    <br>
-    <label for="numberOfDecks">How many decks of cards are required:
-        <input type="number" name="numberOfDecks" min="1" class="game-number-input"/>
-    </label>
-    <br>
-    <label for="instructions">How to play:
-        <br>
-        <textarea type="text" name="instructions" class="game-large-text-input"></textarea>
-    </label>
-    <br>
-    <label for="rules">Rules:
-        <br>
-        <textarea name="rules" class="game-large-text-input"></textarea>
-    </label>
-    <br>
-    <input type="hidden" name="createdBy" value="{{user._id}}"/>
-    <button type="submit">Submit</button>
+  <label for="gameName">Name of the game:
+    <input type="string" name="gameName" class="game-medium-text-input" />
+  </label>
+  <br />
+  <label for="numberOfPlayers">Minimum number of players needed:
+    <input
+      type="number"
+      name="numberOfPlayers"
+      min="1"
+      class="game-number-input"
+    />
+  </label>
+  <br />
+  <label for="numberOfDecks">How many decks of cards are required:
+    <input
+      type="number"
+      name="numberOfDecks"
+      min="1"
+      class="game-number-input"
+    />
+  </label>
+  <br />
+  <label for="instructions">How to play:
+    <br />
+    <textarea
+      type="text"
+      name="instructions"
+      class="game-large-text-input"
+    ></textarea>
+  </label>
+  <br />
+  <label for="rules">Rules:
+    <br />
+    <textarea name="rules" class="game-large-text-input"></textarea>
+  </label>
+  <br />
+  <input type="hidden" name="createdBy" value="{{user._id}}" />
+  <button type="submit">Submit</button>
 </form>

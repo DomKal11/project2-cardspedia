@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const User = require("../models/User.model");
 
-const fileUploader = require('../config/cloudinary.config');
+const fileUploader = require("../config/cloudinary.config");
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guards.js");
 
 router.get("/userProfile", isLoggedIn, (req, res) => {
@@ -19,38 +19,46 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
 router.get("/changeUserPic", isLoggedIn, (req, res) => {
   const userId = req.session.user._id;
   User.findById(userId)
-    .then((userInSession) => res.render("user/change-picture", { userInSession }))
+    .then((userInSession) =>
+      res.render("user/change-picture", { userInSession })
+    )
     .catch((error) =>
       console.log(`Error while getting a single movie for edit: ${error}`)
     );
 });
 
-router.post("/changeUserPic/:id", isLoggedIn, fileUploader.single('profile-pic'), (req, res) => {
-  const { id } = req.params;
-  User.findByIdAndUpdate(id, { picture: req.file.path }, { new: true })
-    .then(() => res.redirect(`/userProfile`))
-    .catch((error) =>
-      console.log(`Error while updating a single movie: ${error}`)
-    );
-});
+router.post(
+  "/changeUserPic/:id",
+  isLoggedIn,
+  fileUploader.single("profile-pic"),
+  (req, res) => {
+    const { id } = req.params;
+    User.findByIdAndUpdate(id, { picture: req.file.path }, { new: true })
+      .then(() => res.redirect(`/userProfile`))
+      .catch((error) =>
+        console.log(`Error while updating a single movie: ${error}`)
+      );
+  }
+);
 
-router.get('/users/:page', (req, res) => {
+router.get("/users/:page", (req, res) => {
   const { page } = req.params;
 
   let length;
+  User.find().then((usersFromDB) => {
+    return (length = usersFromDB.length);
+  });
   User.find()
-  .then(usersFromDB => {
-    return length = usersFromDB.length;
-  })
-  User.find()
-  .skip( (page-1)*3 )
-  .limit( 3 )
-  .sort( '-createdAt' )
-    .then(usersFromDB => {
+    .skip((page - 1) * 3)
+    .limit(3)
+    .sort("-createdAt")
+    .then((usersFromDB) => {
       console.log(length);
-      res.render('user/list.hbs', { users: usersFromDB, length });
+      res.render("user/list.hbs", { users: usersFromDB, length });
     })
-    .catch(err => console.log(`Error while getting the movies from the DB: ${err}`));
+    .catch((err) =>
+      console.log(`Error while getting the movies from the DB: ${err}`)
+    );
 });
 
 router.get("/user/:id/edit", isLoggedIn, (req, res) => {

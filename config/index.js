@@ -1,7 +1,6 @@
 // We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
 
-
 // ℹ️ Responsible for the messages you see in the terminal as requests are coming in
 // https://www.npmjs.com/package/morgan
 const logger = require("morgan");
@@ -31,7 +30,7 @@ const MONGO_URI = require("../utils/consts");
 
 // Middleware configuration
 module.exports = (app) => {
-  app.set('trust proxy', 1);
+  app.set("trust proxy", 1);
   // In development environment the app logs
   app.use(logger("dev"));
 
@@ -60,22 +59,21 @@ module.exports = (app) => {
       rolling: true, //re-saving browser cookie each reload
       saveUninitialized: false,
       cookie: {
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        secure: process.env.NODE_ENV === "production",
         httpOnly: true,
-        maxAge: 600000
+        maxAge: 600000,
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/basic-auth'
+        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/basic-auth",
 
         // ttl => time to live
         // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
-      })
+      }),
     })
   );
   app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
-});
-
+  });
 };

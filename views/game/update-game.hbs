@@ -1,29 +1,44 @@
-
 <h2>Update game</h2>
 
 <form action="/update-game/{{game._id}}" method="post">
-    <label for="gameName">Name of the game:
-        <input type="string" name="gameName" value="{{game.gameName}}"/>
-    </label> 
-    <br>
-    <label for="numberOfPlayers">Minimum number of players needed:
-        <input type="number" name="numberOfPlayers" min="1" value="{{game.numberOfPlayers}}"/>
-    </label>
-    <br>
-    <label for="numberOfDecks">How many decks of cards are required:
-        <input type="number" name="numberOfDecks" min="1" value="{{game.numberOfDecks}}"/>
-    </label>
-    <br>
-    <label for="instructions">How to play:
-        <br>
-        <textarea type="text" name="instructions" class="game-large-text-input">{{game.instructions}}</textarea>
-    </label>
-    <br>
-    <label for="rules">Rules:
-        <br>
-        <textarea name="rules" class="game-large-text-input">{{game.rules}}</textarea>
-    </label>
-    <br>
-    <button type="submit">Save changes</button>
+  <label for="gameName">Name of the game:
+    <input type="string" name="gameName" value="{{game.gameName}}" />
+  </label>
+  <br />
+  <label for="numberOfPlayers">Minimum number of players needed:
+    <input
+      type="number"
+      name="numberOfPlayers"
+      min="1"
+      value="{{game.numberOfPlayers}}"
+    />
+  </label>
+  <br />
+  <label for="numberOfDecks">How many decks of cards are required:
+    <input
+      type="number"
+      name="numberOfDecks"
+      min="1"
+      value="{{game.numberOfDecks}}"
+    />
+  </label>
+  <br />
+  <label for="instructions">How to play:
+    <br />
+    <textarea
+      type="text"
+      name="instructions"
+      class="game-large-text-input"
+    >{{game.instructions}}</textarea>
+  </label>
+  <br />
+  <label for="rules">Rules:
+    <br />
+    <textarea
+      name="rules"
+      class="game-large-text-input"
+    >{{game.rules}}</textarea>
+  </label>
+  <br />
+  <button type="submit">Save changes</button>
 </form>
-

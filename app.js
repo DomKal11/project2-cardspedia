@@ -13,7 +13,7 @@ const express = require("express");
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
 
-hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
 
 const app = express();
 
@@ -21,7 +21,8 @@ const app = express();
 require("./config")(app);
 
 const projectName = "Cardspedia";
-const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
+const capitalized = (string) =>
+  string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)}`;
 
