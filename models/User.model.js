@@ -16,6 +16,7 @@ const userSchema = new Schema(
     password: String,
     games: [{ type: Schema.Types.ObjectId, ref: "Game" }],
     favourites: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+    picture: String
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

@@ -27,10 +27,8 @@ router.get("/user/:id/edit", isLoggedIn, (req, res) => {
 
 router.post("/user/:id/edit", isLoggedIn, (req, res) => {
   const { id } = req.params;
-  const { username } = req.body;
-  console.log(username);
-
-  User.findByIdAndUpdate(id, { username }, { new: true })
+  const { username, birthdate, about } = req.body;
+  User.findByIdAndUpdate(id, { username, birthdate, about }, { new: true })
     .then(() => res.redirect(`/userProfile`))
     .catch((error) =>
       console.log(`Error while updating a single movie: ${error}`)

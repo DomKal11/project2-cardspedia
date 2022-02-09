@@ -1,21 +1,37 @@
-<div id="form">
-  <h2>Login</h2>
+<video autoplay loop muted id="background">
+  <source src="../movie/background.mp4" type="video/mp4" />
+</video>
+<div class="formtile">
+    <div class="col-md-3 formbg">
+      <h2>Log In</h2>
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            class="form-control"
+            id="username"
+            type="text"
+            name="username"
+            placeholder=""
+          />
+        </div>
 
-  <form action="/login" method="POST">
-
-    <label>
-      Username
-      <input type="text" name="username" placeholder="" />
-    </label>
-
-    <label>Password
-      <input type="password" name="password" placeholder="********" />
-    </label>
-
-    <button type="submit">Login</button>
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+        <div class="form-group">
+          <label>
+            Password
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              placeholder=""
+            />
+          </label>
+        </div>
+        <div align="center"><button class="button-main" type="submit"><span>Login</span></button></div>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </div>
 </div>
