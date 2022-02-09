@@ -3,7 +3,7 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const Game = require("../models/Game.model");
 
-const {isLoggedIn} = require("../middleware/route-guards")
+const {isLoggedIn} = require("../middleware/route-guards");
 
 
 //spades (♤), diamonds (♢), clubs (♧) and hearts (♥) --useful for card suits

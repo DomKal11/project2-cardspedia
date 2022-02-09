@@ -10,4 +10,14 @@
 <form action="/delete-game/{{game._id}}" method="post">
     <button type="submit">Delete this game</button>
 </form>
+<br>
+<br>
+
+<h4>Comment on this game</h4>
+<form action="/comment/{{game._id}}/add" method="post">
+    <textarea name="content" class="game-large-text-input"></textarea>
+    <!--<input type="hidden" name="author" value="<some user>"/>-->
+    <br>
+    <button type="submit">Add comment</button>
+</form>
 
