@@ -21,6 +21,11 @@ router.get('/create-game', isLoggedIn, (req,res,next) => {
 router.post('/create-game', (req,res,next) => {
     const { gameName, numberOfPlayers, numberOfDecks, instructions, rules, createdBy } = req.body;
 
+    if (!gameName || !numberOfPlayers || !numberOfDecks || !instructions || !rules || !createdBy) {
+        res.render('game/create-game', { errorMessage: "Please make sure you complete all fields before submitting your game"});
+        return;
+    } 
+
     Game.create({gameName, numberOfPlayers, numberOfDecks, instructions, rules, createdBy }) 
     .then((newGame) => {
        User.findByIdAndUpdate(createdBy, { $push: {games: newGame._id} });

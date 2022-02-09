@@ -2,11 +2,16 @@
 <h2>Create a game</h2>
 
 <form action="/create-game" method="post">
+    {{!-- only shows if user errors in completing form properly --}}
+    {{#if errorMessage}}
+      <p class="gameFormErrorMessage">{{errorMessage}}</p>
+    {{/if}}
+
     <label for="gameName">Name of the game:
         <input type="string" name="gameName" class="game-medium-text-input"/>
     </label> 
     <br>
-    <label for="numberOfPlayers">How many players are needed:
+    <label for="numberOfPlayers">Minimum number of players needed:
         <input type="number" name="numberOfPlayers" min="1" class="game-number-input"/>
     </label>
     <br>
