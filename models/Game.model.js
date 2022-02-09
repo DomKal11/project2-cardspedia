@@ -9,6 +9,7 @@ const gameSchema = new Schema(
     numberOfDecks: Number,
     instructions: String,
     rules: String,
+    numberOfVotes: {type: Number, default: 0},
     createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
     comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
   },
