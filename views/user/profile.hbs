@@ -1,12 +1,13 @@
 <video autoplay loop muted id="background">
   <source src="../movie/background.mp4" type="video/mp4" />
 </video>
+<div class="container h-100">
 <div class="formtile">
     <div class="col-md-3 formbg">
       {{#if userInSession}}
       <h2>Welcome, <b>{{userInSession.username}}</b>!</h2>
       {{#if userInSession.admin}}You are an <b>administrator.</b>{{/if}}
-      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}">
+      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}" onerror="this.src='../images/default-user.png'">
       <p><b>Profile created:</b> {{userInSession.createdAt}}</p>
   <p><b>Date of birth:</b> {{userInSession.birthdate}}</p>
   <p><b>About me:</b> {{userInSession.about}}</p>
@@ -24,4 +25,5 @@
 {{/if}}
     </div>
   </div>
+</div>
 </div>
