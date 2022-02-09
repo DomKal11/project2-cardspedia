@@ -159,3 +159,11 @@ h1 {
   max-width:500px;
 }
 
+.gameFormErrorMessage {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+}
