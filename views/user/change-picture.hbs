@@ -1,0 +1,30 @@
+<div class="overlay"></div>
+<video autoplay loop muted id="background">
+  <source src="../movie/background.mp4" type="video/mp4" />
+</video>
+<div class="container h-100">
+<div class="formtile">
+    <div class="col-md-3 formbg">
+      <h2>Change picture</h2>
+      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}"
+            onerror="this.src='../images/default-user.png'">
+      <form action="/changeUserPic/{{userInSession._id}}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>New image:
+            <input
+              class="form-control"
+              type="file"
+              name="profile-pic"
+              class="profile-pic"
+            />
+          </label>
+        </div>
+        <div align="center"><button class="button-main" type="submit"><span>Change picture</span></button></div>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>
+</div>
