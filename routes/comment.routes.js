@@ -24,5 +24,22 @@ router.post("/comment/:gameId/add", (req, res, next) => {
     })
 });
 
+/*
+//GET route to update comment
+router.get("/comment/:gameId/:commentId/edit", (req,res,next) => {
+    const {gameId, commentId} = req.params;
+
+   //needs a view
+})
+*/
+
+//GET route to delete comment
+router.get("/comment/:gameId/:commentId/delete", (req,res,next) => {
+    const {gameId, commentId} = req.params;
+
+    Comment.findByIdAndDelete(commentId)
+    .then(() => res.redirect(`/game-details/${gameId}`));
+})
+
 
 module.exports = router;

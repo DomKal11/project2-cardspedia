@@ -19,12 +19,15 @@
 {{/unless}}
 
 {{#each game.comments}}
-    <div class="comment-box">
+    <div class="comment-box">        
         <i>{{this.createdAt}}</i>
         <p><b>{{this.author.username}}:</b> {{this.content}}</p>
-        <br>        
+        <form id="comment-form-{{this._id}}" action="/comment/{{../game._id}}/{{this._id}}/edit" type="post"></form>
+        <!--<a class="game-comment-link" href="/comment/{{../game._id}}/{{this._id}}/edit">edit</a>-->
+        <a class="game-comment-link" href="/comment/{{../game._id}}/{{this._id}}/delete">delete</a>    
     </div>
 {{/each}}
+
 <br>
 
 <h5>Comment on this game</h5>

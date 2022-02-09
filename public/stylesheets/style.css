@@ -73,3 +73,12 @@ h1 {
 .game-number-input {
   width: 50px;
 }
+
+.comment-box {
+  margin: 10px 0px 0px 10px;
+}
+
+.game-comment-link {
+  font-size: 10pt;
+  margin: 0px 0px 10px 20px;
+}
