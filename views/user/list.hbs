@@ -1,19 +1,24 @@
 <h1>Users</h1>
 <div class="container">
-<div class="row">
-  {{#each users}}
-    <div class="col-md-4 mb-5">
-      <div class="card" style="width: 18rem;">
-        <img src="{{picture}}" class="card-img-top" alt="{{username}}" onerror="this.src='../images/default-user.png'">
-        <div class="card-body">
-          <h5 class="card-title">{{username}}</h5>
-          <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a> 
+  <div class="row">
+    {{#each users}}
+      <div class="col-md-4 mb-5">
+        <div class="card" style="width: 18rem;">
+          <img
+            src="{{picture}}"
+            class="card-img-top"
+            alt="{{username}}"
+            onerror="this.src='../images/default-user.png'"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{username}}</h5>
+            <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
+          </div>
         </div>
       </div>
-    </div>
-  {{else}}
-    <p>There are no movies yet!</p>
-  {{/each}}
-  <p>{{length}}</p>
-</div>
+    {{else}}
+      <p>There are no movies yet!</p>
+    {{/each}}
+    <p>{{length}}</p>
+  </div>
 </div>

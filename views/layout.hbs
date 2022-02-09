@@ -27,9 +27,31 @@
         class="d-inline-block align-top"
         alt=""
       />
-      <b>Cardspedia</b> ♢♧♡♤
+      <b>Cardspedia</b>
+      ♢♧♡♤
     </a>
-    <span class="navbar-text hide-when-logged">
+    <span class="navbar-text">
+      <a
+        class="navbar-brand nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Games
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">See games</a>
+        <a class="dropdown-item" href="#">Random game</a>
+        {{#if session.user}}
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Add a game</a>
+          <a class="dropdown-item" href="#">My games</a>
+          <a class="dropdown-item" href="#">Liked games</a>
+        {{/if}}
+      </div>
       {{#if session.user}}
         <a class="navbar-brand" href="/userProfile">Profile</a>
         <a class="navbar-brand" href="/logout">Logout</a>
@@ -40,9 +62,9 @@
     </span>
   </nav>
   <body>
-    
+
     {{{body}}}
-    
+
     <script src="/js/script.js"></script>
   </body>
   <div class="footer-dark">
