@@ -1,7 +1,7 @@
 <div class="gamebg">
   <div class="container">
     <div class="formtile">
-      <h1>Games Library</h1>
+      <h1 class="title-animation">Games Library</h1>
       <br>
       <div>
         <div class="row">
@@ -9,16 +9,16 @@
             <div class="col-md-4 mb-5">
               <div class="card" style="width: 20rem;">
                 <a href="/game-details/{{_id}}"><img
-                    src="/images/card_games_background.jpg"
+                    src=""
                     class="card-img-top"
                     alt="{{gameName}}"
-                    onerror="this.src='../images/default-user.png'"
+                    onerror="this.src='../images/card_games_background.jpg'"
                   /></a>
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
                   <p class="card-title">Author: {{createdBy.username}}</p>
                   <p class="card-title">Votes: {{numberOfVotes}}</p>
-                  <a href="/game-details/{{_id}}" class="btn btn-primary">Learn more</a>
+                  <div class="d-flex justify-content-center"><a href="/game-details/{{_id}}" class="button-main smaller-btn learn-more"><span>Learn more</span></a></div>
                 </div>
               </div>
             </div>

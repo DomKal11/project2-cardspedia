@@ -16,6 +16,15 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     );
 });
 
+router.get("/user/:id", isLoggedIn, (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((user) => res.render("user/detail", { user }))
+    .catch((error) =>
+      console.log(`Error while getting a single movie for edit: ${error}`)
+    );
+});
+
 router.get("/changeUserPic", isLoggedIn, (req, res) => {
   const userId = req.session.user._id;
   User.findById(userId)
@@ -41,20 +50,34 @@ router.post(
   }
 );
 
-router.get("/users/:page", (req, res) => {
-  const { page } = req.params;
+router.get("/users", (req, res) => {
+  let page;
+  if (req.query.page) {
+    page = req.query.page;
+    console.log(page);
+  } else {
+    page = 1;
+  } //?page= parameter from URL
+
+  const pages = [];
 
   let length;
   User.find().then((usersFromDB) => {
-    return (length = usersFromDB.length);
+    length = Math.ceil(usersFromDB.length / 6);
+    for (let i = 0; i < length; i++) {
+      pages.push(i + 1);
+    }
+    return pages;
   });
+
   User.find()
-    .skip((page - 1) * 3)
-    .limit(3)
+    .skip((page - 1) * 6)
+    .limit(6)
     .sort("-createdAt")
     .then((usersFromDB) => {
-      console.log(length);
-      res.render("user/list.hbs", { users: usersFromDB, length });
+      let admin = req.session.user.admin;
+      console.log(admin)
+      res.render("user/list.hbs", { users: usersFromDB, pages, page, admin });
     })
     .catch((err) =>
       console.log(`Error while getting the movies from the DB: ${err}`)
@@ -81,7 +104,7 @@ router.post("/user/:id/edit", isLoggedIn, (req, res) => {
     );
 });
 
-router.post("/user/:id/delete", (req, res, next) => {
+router.post("/user/:id/delete", isLoggedIn, (req, res, next) => {
   const { id } = req.params;
 
   User.findByIdAndDelete(id)

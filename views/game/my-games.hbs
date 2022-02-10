@@ -1,38 +1,48 @@
 <div class="gamebg">
   <div class="container">
     <div class="formtile">
-      <h1>Games</h1>
-     
-        <div class="row">
-          {{#each games}}
-            <div class="col-md-4 mb-5">
-              <div class="card" style="width: 20rem;">
-                <a href="/game-details/{{_id}}"><img
-                    src="{{picture}}"
-                    class="card-img-top"
-                    alt="{{gameName}}"
-                    onerror="this.src='../../images/default-user.png'"
-                  /></a>
-                <div class="card-body">
-                  <h5 class="card-title">{{gameName}}</h5>
-                  <p class="card-title">Author: {{createdBy.username}}</p>
-                  <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
+      <h1 class="title-animation">My games</h1>
+      <br />
+      <div class="row">
+        {{#each games}}
+          <div class="col-md-4 mb-5">
+            <div class="card" style="width: 20rem;">
+              <a href="/game-details/{{_id}}"><img
+                  src="{{picture}}"
+                  class="card-img-top"
+                  alt="{{gameName}}"
+                  onerror="this.src='../../images/card_games_background.jpg'"
+                /></a>
+              <div class="card-body">
+                <h5 class="card-title">{{gameName}}</h5>
+                <p class="card-title">Author: {{createdBy.username}}</p>
+                <div class="row justify-content-center">
+                  <a
+                    href="/update-game/{{id}}"
+                    class="button-main smaller-btn"
+                  ><span>Edit</span></a>
+                  <form action="/delete-game/{{game._id}}" method="post">
+                    <button class="button-main smaller-btn" type="submit"><span
+                      >Delete</span></button>
+                  </form>
                 </div>
               </div>
             </div>
-          {{else}}
-            <p>You haven't created any games!!</p>
-          {{/each}}
-        </div>
-        <p class="page page-menu padding-bottom-md">Page {{page}} of {{pages.length}} pages</p>
-        <div class="page-menu">
-          {{#each pages}}<a
-              class="page"
-              href="/game-library/?page={{this}}"
-            >Page
-              {{this}}</a>{{/each}}
-        </div>
-    
+          </div>
+        {{else}}
+          <p>You haven't created any games!!</p>
+        {{/each}}
+      </div>
+      <p class="page page-menu padding-bottom-md">Page
+        {{page}}
+        of
+        {{pages.length}}
+        pages</p>
+      <div class="page-menu">
+        {{#each pages}}<a class="page" href="/game-library/?page={{this}}">Page
+            {{this}}</a>{{/each}}
+      </div>
+
     </div>
   </div>
 </div>

@@ -1,24 +1,46 @@
-<h1>Users</h1>
-<div class="container">
-  <div class="row">
-    {{#each users}}
-      <div class="col-md-4 mb-5">
-        <div class="card" style="width: 18rem;">
-          <img
-            src="{{picture}}"
-            class="card-img-top"
-            alt="{{username}}"
-            onerror="this.src='../images/default-user.png'"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{username}}</h5>
-            <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
-          </div>
+<div class="gamebg">
+  <div class="container">
+    <div class="formtile">
+      <h1 class="title-animation">Users</h1>
+      <br>
+      <div>
+        <div class="row">
+          {{#each users}}
+            <div class="col-md-4 mb-5">
+              <div class="card" style="width: 20rem;">
+                <a href="user/{{id}}"><img
+                    src="{{picture}}"
+                    class="card-img-top"
+                    alt="{{username}}"
+                    onerror="this.src='../images/default-user.png'"
+                  /></a>
+                <div class="card-body">
+                  <div class="d-inline-block"><h5 class="card-title">{{username}}</h5>
+                  {{#if admin}} - Administrator{{/if}}</div>
+                  <p class="card-title">Votes: {{numberOfVotes}}</p>
+                  {{#if ../admin}}<div class="d-flex justify-content-center">
+                    <a href="/users/{{id}}/edit" class="button-main smaller-btn learn-more"><span>Edit</span></a>
+                    <form action="/user/{{id}}/delete" method="post">
+                    <button class="button-main smaller-btn" type="submit"><span>Delete</span></button>
+                  </form>
+                    </div>
+                    {{/if}}
+                </div>
+              </div>
+            </div>
+          {{else}}
+            <p>There are no games!</p>
+          {{/each}}
+        </div>
+        <p class="page page-menu padding-bottom-md">Page {{page}} of {{pages.length}} pages</p>
+        <div class="page-menu">
+          {{#each pages}}<a
+              class="page"
+              href="/users/?page={{this}}"
+            >Page
+              {{this}}</a>{{/each}}
         </div>
       </div>
-    {{else}}
-      <p>There are no movies yet!</p>
-    {{/each}}
-    <p>{{length}}</p>
+    </div>
   </div>
 </div>

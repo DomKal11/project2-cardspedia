@@ -8,10 +8,6 @@ a {
   color: #00b7ff;
 }
 
-h1 {
-  color: 15px;
-}
-
 .navbar {
   border-bottom: 1px solid gray;
   box-shadow: 0px 0px 10px black;
@@ -278,7 +274,6 @@ h1 {
   color: #f0f9ff;
   background-color: #282d32;
   box-shadow: 0px 0px 10px black;
-  margin-top: 200px;
 }
 
 .footer-dark h3 {
@@ -385,7 +380,7 @@ h1 {
 }
 
 .gamebg {
-  padding:100px 0px 100px 0px;
+  padding:20px 0px 250px 0px;
   background: url(../images/bg.jpg);
   background-size:cover;
   background-repeat: repeat;
@@ -407,3 +402,75 @@ h1 {
   color:white;
 }
 
+.smaller-btn{
+  max-width:120px;
+  height:50px;
+  min-width:90px;
+  width:100px;
+  font-size:13px;
+}
+
+.learn-more{
+  max-width:200px;
+  height:50px;
+  min-width:120px;
+  width:150px;
+  font-size:15px;
+}
+h5{
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #af40ff 0%,
+    #5b42f3 29%,
+    #00ddeb 67%,
+    #af40ff 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 3s linear infinite;
+  display: inline-block;
+      font-size: 22px;
+      font-weight:bold;
+}
+
+.title-animation
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #af40ff 0%,
+    #5b42f3 29%,
+    #00ddeb 67%,
+    #af40ff 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 3s linear infinite;
+  display: inline-block;
+      font-size: 45px;
+      font-weight:bold;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.card-img-top{
+  height:200px;
+  border-bottom:1px solid silver;
+}
