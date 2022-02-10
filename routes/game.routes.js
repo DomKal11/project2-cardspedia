@@ -183,7 +183,51 @@ router.get("/random-game", (req,res,next) => {
       function (err, randomGame) {
         res.redirect(`/game-details/${randomGame._id}`);
       });
-  });
+  })
+  .catch((err) => console.log(`Err while finding random game: ${err}`));
 })
+
+
+//GET route for ranked games by votes
+router.get("/ranked-by-votes", (req,res,next) => {
+  let page;
+  if (req.query.page) {
+    page = req.query.page;
+  } else {
+    page = 1;
+  } //?page= parameter from URL
+
+  const pages = [];
+
+  let length;
+  Game.find().then((gamesFromDB) => {
+    length = Math.ceil(gamesFromDB.length / 6);
+    for (let i = 0; i < length; i++) {
+      pages.push(i + 1);
+    }
+    return pages;
+  });
+  Game.find()
+    .populate("createdBy")
+    .skip((page - 1) * 6)
+    .limit(6)
+    .sort({"numberOfVotes": -1})
+    .then((gamesFromDB) => {
+      console.log(length);
+      res.render("game/game-library", { games: gamesFromDB, pages, page });
+    })
+    .catch((err) =>
+      console.log(`Error while getting the movies from the DB: ${err}`)
+    );
+})
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
