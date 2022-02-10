@@ -1,6 +1,10 @@
 
 <H2>{{game.gameName}}</H2>
 
+{{#if errorMessage}}
+    <p class="gameFormErrorMessage">{{errorMessage}}</p>
+  {{/if}}
+
 <div class="game-details">
     <div id="players-and-decks">
         <div>Minimum players:{{game.numberOfPlayers}}</div>
@@ -22,14 +26,14 @@
     <p>{{game.rules}}</p>
 </div>
 
-<!--<p><i>Current game id is {{game._id}}</i></p>-->
-
+{{#if author}}
 <a href="/update-game/{{game._id}}">Edit this game</a>
 <br>
 <br>
 <form action="/delete-game/{{game._id}}" method="post">
     <button type="submit">Delete this game</button>
 </form>
+{{/if}}
 <br>
 <br>
 
