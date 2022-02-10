@@ -1,14 +1,15 @@
 <div class="gamebg">
   <div class="container">
     <div class="formtile">
-      <h1>Games</h1>
+      <h1>Games Library</h1>
+      <br>
       <div>
         <div class="row">
           {{#each games}}
             <div class="col-md-4 mb-5">
               <div class="card" style="width: 18rem;">
                 <a href="/game-details/{{_id}}"><img
-                    src="{{picture}}"
+                    src="/images/card_games_background.jpg"
                     class="card-img-top"
                     alt="{{gameName}}"
                     onerror="this.src='../images/default-user.png'"
@@ -16,7 +17,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
                   <p class="card-title">Author: {{createdBy.username}}</p>
-                  <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
+                  <p class="card-title">Votes: {{numberOfVotes}}</p>
+                  <a href="/game-details/{{_id}}" class="btn btn-primary">Learn more</a>
                 </div>
               </div>
             </div>
