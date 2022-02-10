@@ -149,6 +149,47 @@ router.get("/game-library", (req, res, next) => {
     );
 });
 
+//GET route for Games Library - My Games (user)
+router.get("/game-library/:id/my-games", (req, res, next) => {
+    const { id } = req.params;
+    let page;
+    if (req.query.page) {
+      page = req.query.page;
+    } else {
+      page = 1;
+    } //?page= parameter from URL
+  
+    const pages = [];
+  
+    let length;
+    Game.find({ createdBy: id })
+    .then((gamesFromDB) => {
+      if(gamesFromDB){
+          length = Math.ceil(gamesFromDB.length / 6);
+      for (let i = 0; i < length; i++) {
+        pages.push(i + 1);
+      }
+      return pages;
+    }
+    })
+    .catch((err) =>
+        console.log(`Error while getting the movies from the DB: ${err}`)
+      );
+
+      Game.find({ createdBy: id })
+      .populate("createdBy")
+      .skip((page - 1) * 6)
+      .limit(6)
+      .sort("-createdAt")
+      .then((gamesFromDB) => {
+        console.log(length);
+        res.render("game/my-games", { games: gamesFromDB, pages, page });
+      })
+      .catch((err) =>
+        console.log(`Error while getting the movies from the DB: ${err}`)
+      );
+  });
+
 //GET route for voting for game
 router.get("/game/:gameId/vote", isLoggedIn, (req, res, next) => {
   const { gameId } = req.params;

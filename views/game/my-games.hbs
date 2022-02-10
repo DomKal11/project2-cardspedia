@@ -11,7 +11,7 @@
                     src="{{picture}}"
                     class="card-img-top"
                     alt="{{gameName}}"
-                    onerror="this.src='../images/default-user.png'"
+                    onerror="this.src='../../images/default-user.png'"
                   /></a>
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
@@ -21,7 +21,7 @@
               </div>
             </div>
           {{else}}
-            <p>There are no games!</p>
+            <p>You haven't created any games!!</p>
           {{/each}}
         </div>
         <p class="page page-menu padding-bottom-md">Page {{page}} of {{pages.length}} pages</p>
