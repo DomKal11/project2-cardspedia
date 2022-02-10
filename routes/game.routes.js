@@ -121,6 +121,7 @@ router.get("/game-library", (req, res, next) => {
   let page;
   if (req.query.page) {
     page = req.query.page;
+    console.log(page);
   } else {
     page = 1;
   } //?page= parameter from URL
@@ -184,6 +185,46 @@ router.get("/game-library/:id/my-games", (req, res, next) => {
       .then((gamesFromDB) => {
         console.log(length);
         res.render("game/my-games", { games: gamesFromDB, pages, page });
+      })
+      .catch((err) =>
+        console.log(`Error while getting the movies from the DB: ${err}`)
+      );
+  });
+
+  //GET route for Games Library - Favourite games (user)
+router.get("/game-library/:id/favorite-games", (req, res, next) => {
+    const { id } = req.params;
+    let page;
+    if (req.query.page) {
+      page = req.query.page;
+    } else {
+      page = 1;
+    } //?page= parameter from URL
+  
+    const pages = [];
+  
+    let length;
+    User.findById(id)
+    .then((userFromDB) => {
+      if(userFromDB.favourites){
+          length = Math.ceil(userFromDB.favourites.length / 6);
+      for (let i = 0; i < length; i++) {
+        pages.push(i + 1);
+      }
+      console.log(userFromDB.favourites.length);
+      return pages;
+    }
+    })
+    .catch((err) =>
+        console.log(`Error while getting the movies from the DB: ${err}`)
+      );
+
+      User.findById(id)
+      .populate('favourites')
+      .skip((page - 1) * 6)
+      .limit(6)
+      .then((userFromDB) => {
+        res.render("user/favorites", { user: userFromDB, pages, page });
       })
       .catch((err) =>
         console.log(`Error while getting the movies from the DB: ${err}`)

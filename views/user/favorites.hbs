@@ -2,11 +2,11 @@
   <div class="container">
     <div class="formtile">
       <h1>Games</h1>
-     
+      <div class="container">
         <div class="row">
-          {{#each games}}
+          {{#each user.favourites}}
             <div class="col-md-4 mb-5">
-              <div class="card" style="width: 20rem;">
+              <div class="card" style="width: 18rem;">
                 <a href="/game-details/{{_id}}"><img
                     src="{{picture}}"
                     class="card-img-top"
@@ -15,7 +15,7 @@
                   /></a>
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
-                  <p class="card-title">Author: {{createdBy.username}}</p>
+                  <p class="card-title">Author: {{../user.username}}</p>
                   <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
                 </div>
               </div>
@@ -32,7 +32,7 @@
             >Page
               {{this}}</a>{{/each}}
         </div>
-    
+      </div>
     </div>
   </div>
 </div>
