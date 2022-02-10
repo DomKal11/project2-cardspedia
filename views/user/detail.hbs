@@ -1,0 +1,26 @@
+<div class="overlay"></div>
+<video playsinline autoplay loop muted id="background">
+  <source src="../movie/background.mp4" type="video/mp4" />
+</video>
+<div class="container h-100">
+  <div class="formtile">
+    <div class="col-md-3 formbg">
+      {{#if user}}
+      <h2><b>{{user.username}}</b></h2>
+      {{#if user.admin}}{{user.username}} is an <b>administrator.</b>{{/if}}
+      <div class="profilepic-bg"><a href="/changeUserPic">
+          <img src="{{user.picture}}" class="card-img-top profilepic" alt="{{user.username}}"
+            onerror="this.src='../images/default-user.png'">
+        </a></div>
+      <p><b>Profile created:</b> {{dateFormat user.createdAt "dddd, MMMM Do YYYY, h:mm:ss a"}}</p>
+      <p><b>Date of birth:</b> {{dateFormat user.birthdate "dddd, MMMM Do YYYY"}}</p>
+      <p><b>About me:</b> {{user.about}}</p>
+
+      </form>
+      {{else}}
+      <p>User does not exist!</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
+</div>

@@ -1,22 +1,23 @@
 <div class="gamebg">
   <div class="container">
     <div class="formtile">
-      <h1>Games</h1>
+      <h1 class="title-animation">Favorite games</h1>
+      <br>
       <div class="container">
         <div class="row">
           {{#each user.favourites}}
             <div class="col-md-4 mb-5">
-              <div class="card" style="width: 18rem;">
+              <div class="card" style="width: 20rem;">
                 <a href="/game-details/{{_id}}"><img
                     src="{{picture}}"
                     class="card-img-top"
                     alt="{{gameName}}"
-                    onerror="this.src='../../images/default-user.png'"
+                    onerror="this.src='../../images/card_games_background.jpg'"
                   /></a>
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
                   <p class="card-title">Author: {{../user.username}}</p>
-                  <a href="/users/{{id}}/edit" class="btn btn-primary">Edit</a>
+                  <div class="d-flex justify-content-center"><a href="/game-details/{{_id}}" class="button-main smaller-btn learn-more"><span>Learn more</span></a></div>
                 </div>
               </div>
             </div>

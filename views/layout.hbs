@@ -51,6 +51,8 @@
           <a class="dropdown-item" href="/create-game">Add a game</a>
           <a class="dropdown-item" href="/game-library/{{session.user._id}}/my-games">My games</a>
           <a class="dropdown-item" href="/game-library/{{session.user._id}}/favorite-games">Liked games</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/users">Fellow players</a>
         {{/if}}
       </div>
       {{#if session.user}}
