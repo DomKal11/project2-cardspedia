@@ -89,6 +89,7 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 <!--SERVER ROUTES-->
 ### Server routes
+
 | Method | Route                              | Description                                                                                   |
 |--------|------------------------------------|-----------------------------------------------------------------------------------------------|
 | GET    | /userProfile                       | renders the user profile page                                                                 |
@@ -118,7 +119,6 @@ All models have timsetamps to enable createdAt and updatedAt properties
 | GET    | /ranked-by-votes                   | Gets the list of games sorted by number of votes descending and renders the game library page |
 | POST   | /comment/:gameId/add               | Adds a comment to the game                                                                    |
 | GET    | /comment/:gameId/:commentId/delete | Deletes a comment from a game                                                                 |
-
 
 
 <!--Project Link-->
