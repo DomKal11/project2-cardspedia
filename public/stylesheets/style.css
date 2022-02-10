@@ -90,15 +90,6 @@ a {
   }
 }
 
-.game-large-text-input {
-  width: 500px;
-  height: 150px;
-}
-
-.game-medium-text-input {
-  width: 340px;
-}
-
 .game-number-input {
   width: 50px;
 }
@@ -178,6 +169,19 @@ a {
   box-shadow: 0px 0px 10px black;
 }
 
+.formbg-game {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  padding: 3%;
+  min-width: 400px;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px black;
+}
+
 .formbg > h2 {
   border-bottom: 1px solid black;
   margin-bottom: 20px;
@@ -235,11 +239,15 @@ a {
 #players-and-decks {
   display: flex;
   align-items: center;
+  justify-content:center;
+  flex-direction: row;
+  vertical-align:middle;
   margin: 10px 10px 10px 0px;
+  position: relative;
 }
 
 #players-and-decks div {
-  margin: 10px 10px 10px 0px;
+  margin: 10px 30px 10px 0px;
 }
 
 .vote-box {
@@ -410,6 +418,14 @@ a {
   font-size:13px;
 }
 
+.mid-btn{
+  max-width:200px;
+  height:50px;
+  min-width:130px;
+  width:180px;
+  font-size:13px;
+}
+
 .learn-more{
   max-width:200px;
   height:50px;
@@ -474,3 +490,23 @@ h5{
   height:200px;
   border-bottom:1px solid silver;
 }
+
+.dark-link{
+  color:black;
+  font-weight:bold;
+}
+
+.favorites-btn{
+  position:relative;
+  width:90px;
+  height:65px;
+  top:10px;
+}
+
+.favorites-btn > span{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space:normal;
+  hyphens: auto;
+}
+

@@ -17,7 +17,6 @@
                 <div class="card-body">
                   <div class="d-inline-block"><h5 class="card-title">{{username}}</h5>
                   {{#if admin}} - Administrator{{/if}}</div>
-                  <p class="card-title">Votes: {{numberOfVotes}}</p>
                   {{#if ../admin}}<div class="d-flex justify-content-center">
                     <a href="/users/{{id}}/edit" class="button-main smaller-btn learn-more"><span>Edit</span></a>
                     <form action="/user/{{id}}/delete" method="post">

@@ -1,5 +1,8 @@
-
-<H2>{{game.gameName}}</H2>
+<div class="gamebg">
+  <div class="container">
+    <div class="formtile">
+      <div class="col-md-8 formbg-game">
+<h1 class="title-animation">{{game.gameName}}</h1>
 
 {{#if errorMessage}}
     <p class="gameFormErrorMessage">{{errorMessage}}</p>
@@ -7,8 +10,8 @@
 
 <div class="game-details">
     <div id="players-and-decks">
-        <div>Minimum players:{{game.numberOfPlayers}}</div>
-        <div>Number of decks: {{game.numberOfDecks}}</div>
+        <div>Minimum players: <b>{{game.numberOfPlayers}}</b></div>
+        <div>Number of decks: <b>{{game.numberOfDecks}}</b></div>
         <div class="vote-box">
             <a href="/game/{{game._id}}/vote">
                 <p>{{game.numberOfVotes}}</p>
@@ -16,22 +19,22 @@
             </a>
         </div>
         <form action="/game/{{game._id}}/add-to-favourites">
-            <button type="submit" class="btn-add-to-favourites">Add to favourites</button>
+            <button type="submit" class="button-main mid-btn favorites-btn"><span>Add to favourites</span></button>
         </form>
     </div>
-    <h4>How to Play:</h4>
+    <div>Author: <a class="dark-link" href="../user/{{game.createdBy.id}}">🔗{{game.createdBy.username}}</a></div>
+    <br>
+    <h4><b>How to Play:</b></h4>
     <p>{{game.instructions}}</p>
 
-    <h4>Rules:</h4>
+    <h4><b>Rules:</b></h4>
     <p>{{game.rules}}</p>
 </div>
 
 {{#if author}}
-<a href="/update-game/{{game._id}}">Edit this game</a>
-<br>
-<br>
+<div class="row"><a href="/update-game/{{game._id}}" class="button-main mid-btn"><span>Edit this game</span></a>
 <form action="/delete-game/{{game._id}}" method="post">
-    <button type="submit">Delete this game</button>
+    <button type="submit" class="button-main mid-btn"><span>Delete this game</span></button></div>
 </form>
 {{/if}}
 <br>
@@ -56,9 +59,12 @@
 
 <h5>Comment on this game</h5>
 <form action="/comment/{{game._id}}/add" method="post">
-    <textarea name="content" class="game-large-text-input"></textarea>
+    <textarea name="content" class="form-control"></textarea>
     <!--<input type="hidden" name="author" value="<some user>"/>-->
     <br>
-    <button type="submit">Add comment</button>
+    <button type="submit" class="button-main" style="margin: 0 auto"><span>Add comment</span></button>
 </form>
-
+      </div>
+    </div>
+  </div>
+</div>

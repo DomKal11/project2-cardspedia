@@ -65,6 +65,7 @@ router.get("/game-details/:gameId", (req, res, next) => {
   const  author = 1;
 
   Game.findById(gameId)
+  .populate("createdBy")
     .populate("comments") //this part is to return both the comments and username of the commentor
     .populate({
       path: "comments",
