@@ -108,7 +108,7 @@ router.post("/update-game/:gameId", isLoggedIn, (req, res, next) => {
 });
 
 //POST route for deleting a game
-router.post("/delete-game/:gameId", (req, res, next) => {
+router.post("/delete-game/:gameId", isLoggedIn, (req, res, next) => {
   const { gameId } = req.params;
   console.log("called ok");
   Game.findByIdAndRemove(gameId)

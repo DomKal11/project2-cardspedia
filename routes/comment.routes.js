@@ -6,7 +6,7 @@ const Comment = require("../models/Comment.model");
 const { isLoggedIn } = require("../middleware/route-guards");
 
 //POST route for adding comments to games
-router.post("/comment/:gameId/add", (req, res, next) => {
+router.post("/comment/:gameId/add", isLoggedIn, (req, res, next) => {
   const { gameId } = req.params;
   let userId = req.session.user._id;
   const { content } = req.body;
@@ -36,7 +36,7 @@ router.get("/comment/:gameId/:commentId/edit", (req,res,next) => {
 */
 
 //GET route to delete comment
-router.get("/comment/:gameId/:commentId/delete", (req, res, next) => {
+router.get("/comment/:gameId/:commentId/delete", isLoggedIn, (req, res, next) => {
   const { gameId, commentId } = req.params;
 
   Comment.findByIdAndDelete(commentId).then(() =>
