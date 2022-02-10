@@ -15,11 +15,9 @@
     <a href="https://github.com/DomKal11/Project2-cardspedia/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://cardspedia.heroku.com">View Demo</a>
+    <a href="https://cardspedia.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/DomKal11/Project2-cardspedia/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/DomKal11/Project2-cardspedia/issues">Request Feature</a>
   </p>
 </div>
 
@@ -35,8 +33,12 @@ Once logged in the user has the added benefit of being able to add games that th
 
 <!-- WIREFRAMES -->
 ### Wirefrmaes 
-...to be added
 
+[Landing page](/public/images/wireframes/Wireframe_Landing.png?raw=true "Landing Page")
+
+[Signup and Login](/public/images/wireframes/Wireframe_SignupLogin.png?raw=true "Signup and Login")
+
+[Game Library](/public/images/wireframes/Wireframe_GameLibrary.png?raw=true "Game Library")
 
 <!--USER STORIES-->
 ### User Stories
@@ -70,6 +72,7 @@ As a Viewer I can see which games are ranked the highest by number of votes <br 
 ### Technologies used
 
 * [Node.js](https://nodejs.org/)
+* [npm](https://www.npmjs.com/")
 * [HTML 5](http://www.html5.com/)
 * [CSS](https://www.w3schools.com/w3css/defaulT.asp)
 
@@ -86,24 +89,56 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 <!--SERVER ROUTES-->
 ### Server routes
-...to be added
+\begin{table}[]
+\begin{tabular}{lll}
+Method & Route                              & Description                                                                                   \\
+GET    & /userProfile                       & renders the user profile page                                                                 \\
+GET    & /changeUserPic                     & renders the user profile page after addition of a picture                                     \\
+POST   & /changeUserPic/:Id                 & Posts a user picture to the user record in the DB                                             \\
+GET    & /users/:page                       & Fetches the list of users for admins and paginates                                            \\
+GET    & /user/:id/edit                     & renders the user edit page                                                                    \\
+POST   & /user/:id/edit                     & posts the edit to the user record                                                             \\
+POST   & /user/:id/delete                   & deletes a user from the DB                                                                    \\
+POST   & /logout                            & Logs the user out and destroys the session                                                    \\
+GET    & /signup                            & renders the create user page                                                                  \\
+POST   & /signup                            & creates the user in the DB (password is encrypted)                                            \\
+GET    & /login                             & renders the login page                                                                        \\
+POST   & /login                             & checks the password and if correct logs user in                                               \\
+GET    & /                                  & renders the index                                                                             \\
+GET    & /create-game                       & renders the create-game page                                                                  \\
+POST   & /create-game                       & creates the record for the game in the DB                                                     \\
+GET    & /game-details/:gameId              & loads the game details page for a given game                                                  \\
+GET    & /update-game/:gameId               & renders the edit game page                                                                    \\
+POST   & /update-game/:gameId               & records the game edit in the DB                                                               \\
+POST   & /delete-game/:gameId               & deletes the game from the DB                                                                  \\
+GET    & /game-library                      & renders the game library page                                                                 \\
+GET    & /game-library/:id/my-games         & renders the game library with just the users' created games                                   \\
+GET    & /game/:gameId/vote                 & increments the vote count on a game by one                                                    \\
+GET    & /game/:gameId/add-to-favourites    & Adds the game to the users favourites                                                         \\
+GET    & /random-game                       & Selects a random game from the DB and renders its game details page                           \\
+GET    & /ranked-by-votes                   & Gets the list of games sorted by number of votes descending and renders the game library page \\
+POST   & /comment/:gameId/add               & Adds a comment to the game                                                                    \\
+GET    & /comment/:gameId/:commentId/delete & Deletes a comment from a game                                                                
+\end{tabular}
+\end{table}
 
 
 
 <!--Project Link-->
 ### Link to project
-<a href="https://cardspedia.heroku.com">Cardspedia</a>
+<a href="https://cardspedia.herokuapp.com/">Cardspedia</a>
 
 
 <!--Future Work-->
 
 ### Future Work
-...to be added
+* Search bar functionality to search for games
 
 
 <!--RESOURCES-->
 ### Resources
-...to be added
+* <a href="https://www.npmjs.com/">npm</a>
+* <a href="https://stackoverflow.com/">Stack Overflow</a>
 
 
 <!--TEAM MEMBERS-->
