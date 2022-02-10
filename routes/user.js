@@ -16,7 +16,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     );
 });
 
-router.get("/user/:id", isLoggedIn, (req, res) => {
+router.get("/user/:id", (req, res) => {
   const { id } = req.params;
   User.findById(id)
     .then((user) => res.render("user/detail", { user }))
