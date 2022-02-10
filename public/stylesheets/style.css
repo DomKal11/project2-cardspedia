@@ -26,6 +26,17 @@ h1 {
 
 .dropdown-menu {
   left: auto !important;
+  z-index:2000;
+}
+
+@media (min-width: 768px){
+.col-md-4 {
+  max-width: 100%;
+}
+}
+
+.card{
+  margin: 0 auto;
 }
 
 #background {
