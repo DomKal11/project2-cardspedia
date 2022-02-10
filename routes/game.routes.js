@@ -272,7 +272,42 @@ router.get("/ranked-by-votes", (req,res,next) => {
 
 
 
+/*//temp store in case needed
+//GET route for 'My favourites'
+router.get("/my-favourites", (req,res,next) => {
+  let page;
+  if (req.query.page) {
+    page = req.query.page;
+  } else {
+    page = 1;
+  } //?page= parameter from URL
 
+  const pages = [];
+
+  let length;
+  User.findById("62026e332c16bd8fb8f4b0a3").then((userFromDB) => {
+    length = Math.ceil(userFromDB.favourites.length / 6);
+    for (let i = 0; i < length; i++) {
+      pages.push(i + 1);
+    }
+    return pages;
+  });
+
+  User.findById("62026e332c16bd8fb8f4b0a3")
+    .populate("favourites")
+    .skip((page - 1) * 6)
+    .limit(6)
+    .sort({"createdAt": -1})
+    .then((gamesFromDB) => {
+      console.log(length);
+      console.log(gamesFromDB.favourites)
+      res.render("game/game-library", { games: gamesFromDB, pages, page });
+    })
+    .catch((err) =>
+      console.log(`Error while getting the movies from the DB: ${err}`)
+    );
+})
+*/
 
 
 
