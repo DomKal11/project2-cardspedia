@@ -118,7 +118,35 @@ router.post("/delete-game/:gameId", (req, res, next) => {
 
 //GET route for Games Library Page
 router.get("/game-library", (req, res, next) => {
-  res.render("game/game-library");
+  let page;
+  if (req.query.page) {
+    page = req.query.page;
+  } else {
+    page = 1;
+  } //?page= parameter from URL
+
+  const pages = [];
+
+  let length;
+  Game.find().then((gamesFromDB) => {
+    length = Math.ceil(gamesFromDB.length / 6);
+    for (let i = 0; i < length; i++) {
+      pages.push(i + 1);
+    }
+    return pages;
+  });
+  Game.find()
+    .populate("createdBy")
+    .skip((page - 1) * 6)
+    .limit(6)
+    .sort("-createdAt")
+    .then((gamesFromDB) => {
+      console.log(length);
+      res.render("game/game-library", { games: gamesFromDB, pages, page });
+    })
+    .catch((err) =>
+      console.log(`Error while getting the movies from the DB: ${err}`)
+    );
 });
 
 //GET route for voting for game
