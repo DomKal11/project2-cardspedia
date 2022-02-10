@@ -2,7 +2,7 @@
   <div class="container">
     <div class="formtile">
       <h1 class="title-animation">Favorite games</h1>
-      <br>
+      <br />
       <div class="container">
         <div class="row">
           {{#each user.favourites}}
@@ -16,8 +16,15 @@
                   /></a>
                 <div class="card-body">
                   <h5 class="card-title">{{gameName}}</h5>
-                  <p class="card-title">Author: <a class="dark-link" href="../../user/{{../user.id}}">{{../user.username}}</a></p>
-                  <div class="d-flex justify-content-center"><a href="/game-details/{{_id}}" class="button-main smaller-btn learn-more"><span>Learn more</span></a></div>
+                  <p class="card-title">Author:
+                    <a
+                      class="dark-link"
+                      href="../../user/{{createdBy.id}}"
+                    >{{createdBy.username}}</a></p>
+                  <div class="d-flex justify-content-center"><a
+                      href="/game-details/{{_id}}"
+                      class="button-main smaller-btn learn-more"
+                    ><span>Learn more</span></a></div>
                 </div>
               </div>
             </div>
@@ -25,7 +32,11 @@
             <p>You haven't created any games!!</p>
           {{/each}}
         </div>
-        <p class="page page-menu padding-bottom-md">Page {{page}} of {{pages.length}} pages</p>
+        <p class="page page-menu padding-bottom-md">Page
+          {{page}}
+          of
+          {{pages.length}}
+          pages</p>
         <div class="page-menu">
           {{#each pages}}<a
               class="page"

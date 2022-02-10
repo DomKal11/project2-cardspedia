@@ -229,10 +229,18 @@ router.get("/game-library/:id/favorite-games", (req, res, next) => {
       );
 
       User.findById(id)
-      .populate('favourites')
+      .populate("favourites")
+      .populate({
+        path: "favourites",
+        populate: {
+          path: "createdBy",
+          model: "User",
+        },
+      })
       .skip((page - 1) * 6)
       .limit(6)
       .then((userFromDB) => {
+        console.log(userFromDB)
         res.render("user/favorites", { user: userFromDB, pages, page });
       })
       .catch((err) =>
