@@ -62,6 +62,7 @@ router.post("/create-game", (req, res, next) => {
 //GET route for game details
 router.get("/game-details/:gameId", (req, res, next) => {
   const { gameId } = req.params;
+  const  author = 1;
 
   Game.findById(gameId)
     .populate("comments") //this part is to return both the comments and username of the commentor
@@ -73,7 +74,13 @@ router.get("/game-details/:gameId", (req, res, next) => {
       },
     })
     .then((gameDetails) => {
-      res.render("game/game-details", { game: gameDetails });
+      const gId = gameDetails.createdBy._id.toString();
+            
+      if(!req.session.user || gId !== req.session.user._id) { //provide test for edit and delete buttons for author only
+        res.render("game/game-details", { game: gameDetails})
+       } else {
+        res.render("game/game-details", { game: gameDetails, author: author })   
+       }
     })
     .catch((err) => console.log(`Err while creating game: ${err}`));
 });
@@ -81,15 +88,16 @@ router.get("/game-details/:gameId", (req, res, next) => {
 //GET route for update game details
 router.get("/update-game/:gameId", isLoggedIn, (req, res, next) => {
   const { gameId } = req.params;
-
+    
   Game.findById(gameId)
-    .then((gameDetails) =>
-      res.render("game/update-game", { game: gameDetails })
-    )
+    .then((gameDetails) => {
+        res.render("game/update-game", { game: gameDetails })   
+       })
     .catch((err) =>
       console.log(`Err while rendering update-game page: ${err}`)
     );
 });
+
 
 //POST route for editing game details
 router.post("/update-game/:gameId", isLoggedIn, (req, res, next) => {
@@ -220,7 +228,6 @@ router.get("/ranked-by-votes", (req,res,next) => {
       console.log(`Error while getting the movies from the DB: ${err}`)
     );
 })
-
 
 
 
