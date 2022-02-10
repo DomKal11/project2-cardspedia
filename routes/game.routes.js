@@ -141,4 +141,32 @@ router.get("/game/:gameId/add-to-favourites", isLoggedIn, (req, res, next) => {
     .catch((err) => console.log(`Err while adding game to favourites: ${err}`));
 });
 
+
+//GET route for random game
+router.get("/random-game", (req,res,next) => {
+  let randomNumber = 0;
+
+  Game.countDocuments()
+  .then(numberOfGames => {
+    randomNumber = Math.floor(Math.random() * numberOfGames)
+  })
+  .then(() => {
+    Game.findOne().skip(randomNumber).exec(
+      function (err, randomGame) {
+        res.redirect(`/game-details/${randomGame._id}`);
+      });
+  });
+  
+  
+  /*
+  .then(numberOfGames => {
+    
+  })
+  .then(randomNumber => {
+    Game.findOne().skip(randomNumber) //fetch one game offset by our random number
+  })
+  .then(randomGame => console.log(randomGame));
+  */
+})
+
 module.exports = router;
