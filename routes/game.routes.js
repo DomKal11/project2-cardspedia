@@ -110,7 +110,7 @@ router.post("/update-game/:gameId", isLoggedIn, (req, res, next) => {
 //POST route for deleting a game
 router.post("/delete-game/:gameId", isLoggedIn, (req, res, next) => {
   const { gameId } = req.params;
-  console.log("called ok");
+  
   Game.findByIdAndRemove(gameId)
     .then(() => res.redirect("/game-library"))
     .catch((err) => console.log(`Err while removing game: ${err}`));
@@ -184,17 +184,6 @@ router.get("/random-game", (req,res,next) => {
         res.redirect(`/game-details/${randomGame._id}`);
       });
   });
-  
-  
-  /*
-  .then(numberOfGames => {
-    
-  })
-  .then(randomNumber => {
-    Game.findOne().skip(randomNumber) //fetch one game offset by our random number
-  })
-  .then(randomGame => console.log(randomGame));
-  */
 })
 
 module.exports = router;
