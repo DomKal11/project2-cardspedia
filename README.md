@@ -89,38 +89,35 @@ All models have timsetamps to enable createdAt and updatedAt properties
 
 <!--SERVER ROUTES-->
 ### Server routes
-\begin{table}[]
-\begin{tabular}{lll}
-Method & Route                              & Description                                                                                   \\
-GET    & /userProfile                       & renders the user profile page                                                                 \\
-GET    & /changeUserPic                     & renders the user profile page after addition of a picture                                     \\
-POST   & /changeUserPic/:Id                 & Posts a user picture to the user record in the DB                                             \\
-GET    & /users/:page                       & Fetches the list of users for admins and paginates                                            \\
-GET    & /user/:id/edit                     & renders the user edit page                                                                    \\
-POST   & /user/:id/edit                     & posts the edit to the user record                                                             \\
-POST   & /user/:id/delete                   & deletes a user from the DB                                                                    \\
-POST   & /logout                            & Logs the user out and destroys the session                                                    \\
-GET    & /signup                            & renders the create user page                                                                  \\
-POST   & /signup                            & creates the user in the DB (password is encrypted)                                            \\
-GET    & /login                             & renders the login page                                                                        \\
-POST   & /login                             & checks the password and if correct logs user in                                               \\
-GET    & /                                  & renders the index                                                                             \\
-GET    & /create-game                       & renders the create-game page                                                                  \\
-POST   & /create-game                       & creates the record for the game in the DB                                                     \\
-GET    & /game-details/:gameId              & loads the game details page for a given game                                                  \\
-GET    & /update-game/:gameId               & renders the edit game page                                                                    \\
-POST   & /update-game/:gameId               & records the game edit in the DB                                                               \\
-POST   & /delete-game/:gameId               & deletes the game from the DB                                                                  \\
-GET    & /game-library                      & renders the game library page                                                                 \\
-GET    & /game-library/:id/my-games         & renders the game library with just the users' created games                                   \\
-GET    & /game/:gameId/vote                 & increments the vote count on a game by one                                                    \\
-GET    & /game/:gameId/add-to-favourites    & Adds the game to the users favourites                                                         \\
-GET    & /random-game                       & Selects a random game from the DB and renders its game details page                           \\
-GET    & /ranked-by-votes                   & Gets the list of games sorted by number of votes descending and renders the game library page \\
-POST   & /comment/:gameId/add               & Adds a comment to the game                                                                    \\
-GET    & /comment/:gameId/:commentId/delete & Deletes a comment from a game                                                                
-\end{tabular}
-\end{table}
+| Method | Route                              | Description                                                                                   |
+|--------|------------------------------------|-----------------------------------------------------------------------------------------------|
+| GET    | /userProfile                       | renders the user profile page                                                                 |
+| GET    | /changeUserPic                     | renders the user profile page after addition of a picture                                     |
+| POST   | /changeUserPic/:Id                 | Posts a user picture to the user record in the DB                                             |
+| GET    | /users/:page                       | Fetches the list of users for admins and paginates                                            |
+| GET    | /user/:id/edit                     | renders the user edit page                                                                    |
+| POST   | /user/:id/edit                     | posts the edit to the user record                                                             |
+| POST   | /user/:id/delete                   | deletes a user from the DB                                                                    |
+| POST   | /logout                            | Logs the user out and destroys the session                                                    |
+| GET    | /signup                            | renders the create user page                                                                  |
+| POST   | /signup                            | creates the user in the DB (password is encrypted)                                            |
+| GET    | /login                             | renders the login page                                                                        |
+| POST   | /login                             | checks the password and if correct logs user in                                               |
+| GET    | /                                  | renders the index                                                                             |
+| GET    | /create-game                       | renders the create-game page                                                                  |
+| POST   | /create-game                       | creates the record for the game in the DB                                                     |
+| GET    | /game-details/:gameId              | loads the game details page for a given game                                                  |
+| GET    | /update-game/:gameId               | renders the edit game page                                                                    |
+| POST   | /update-game/:gameId               | records the game edit in the DB                                                               |
+| POST   | /delete-game/:gameId               | deletes the game from the DB                                                                  |
+| GET    | /game-library                      | renders the game library page                                                                 |
+| GET    | /game-library/:id/my-games         | renders the game library with just the users' created games                                   |
+| GET    | /game/:gameId/vote                 | increments the vote count on a game by one                                                    |
+| GET    | /game/:gameId/add-to-favourites    | Adds the game to the users favourites                                                         |
+| GET    | /random-game                       | Selects a random game from the DB and renders its game details page                           |
+| GET    | /ranked-by-votes                   | Gets the list of games sorted by number of votes descending and renders the game library page |
+| POST   | /comment/:gameId/add               | Adds a comment to the game                                                                    |
+| GET    | /comment/:gameId/:commentId/delete | Deletes a comment from a game                                                                 |
 
 
 
