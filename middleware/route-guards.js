@@ -3,7 +3,7 @@
 // checks if the user is logged in when trying to access a specific page
 const isLoggedIn = (req, res, next) => {
   if (!req.session.user) {
-    return res.redirect("login"); //need to recheck these paths once views are created
+    return res.redirect("/login"); //need to recheck these paths once views are created
   }
   next();
 };
