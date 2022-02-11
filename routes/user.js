@@ -12,7 +12,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
   User.findById(userId)
     .then((userInSession) => res.render("user/profile", { userInSession }))
     .catch((error) =>
-      console.log(`Error while getting a single movie for edit: ${error}`)
+      console.log(`Error while getting a single user for edit: ${error}`)
     );
 });
 
@@ -21,7 +21,7 @@ router.get("/user/:id", (req, res) => {
   User.findById(id)
     .then((user) => res.render("user/detail", { user }))
     .catch((error) =>
-      console.log(`Error while getting a single movie for edit: ${error}`)
+      console.log(`Error while getting a single user for edit: ${error}`)
     );
 });
 
@@ -32,7 +32,7 @@ router.get("/changeUserPic", isLoggedIn, (req, res) => {
       res.render("user/change-picture", { userInSession })
     )
     .catch((error) =>
-      console.log(`Error while getting a single movie for edit: ${error}`)
+      console.log(`Error while getting a single user for edit: ${error}`)
     );
 });
 
@@ -45,7 +45,7 @@ router.post(
     User.findByIdAndUpdate(id, { picture: req.file.path }, { new: true })
       .then(() => res.redirect(`/userProfile`))
       .catch((error) =>
-        console.log(`Error while updating a single movie: ${error}`)
+        console.log(`Error while updating a single user: ${error}`)
       );
   }
 );
@@ -62,25 +62,33 @@ router.get("/users", (req, res) => {
   const pages = [];
 
   let length;
-  User.find().then((usersFromDB) => {
-    length = Math.ceil(usersFromDB.length / 6);
-    for (let i = 0; i < length; i++) {
-      pages.push(i + 1);
-    }
-    return pages;
-  });
-
   User.find()
-    .skip((page - 1) * 6)
-    .limit(6)
-    .sort("-createdAt")
     .then((usersFromDB) => {
-      let admin = req.session.user.admin;
-      console.log(admin)
-      res.render("user/list.hbs", { users: usersFromDB, pages, page, admin });
+      length = Math.ceil(usersFromDB.length / 6);
+      for (let i = 0; i < length; i++) {
+        pages.push(i + 1);
+      }
+
+      User.find()
+        .skip((page - 1) * 6)
+        .limit(6)
+        .sort("-createdAt")
+        .then((usersFromDB) => {
+          let admin = req.session.user.admin;
+          console.log(admin);
+          res.render("user/list.hbs", {
+            users: usersFromDB,
+            pages,
+            page,
+            admin,
+          });
+        })
+        .catch((err) =>
+          console.log(`Error while getting the users from the DB: ${err}`)
+        );
     })
     .catch((err) =>
-      console.log(`Error while getting the movies from the DB: ${err}`)
+      console.log(`Error while getting the users from the DB: ${err}`)
     );
 });
 
@@ -90,7 +98,7 @@ router.get("/user/:id/edit", isLoggedIn, (req, res) => {
   User.findById(id)
     .then((userToEdit) => res.render("user/update", userToEdit))
     .catch((error) =>
-      console.log(`Error while getting a single movie for edit: ${error}`)
+      console.log(`Error while getting a single user for edit: ${error}`)
     );
 });
 
@@ -100,7 +108,7 @@ router.post("/user/:id/edit", isLoggedIn, (req, res) => {
   User.findByIdAndUpdate(id, { username, birthdate, about }, { new: true })
     .then(() => res.redirect(`/userProfile`))
     .catch((error) =>
-      console.log(`Error while updating a single movie: ${error}`)
+      console.log(`Error while updating a single user: ${error}`)
     );
 });
 
