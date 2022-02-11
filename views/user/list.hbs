@@ -18,7 +18,7 @@
                   <div class="d-inline-block"><h5 class="card-title">{{username}}</h5>
                   {{#if admin}} - Administrator{{/if}}</div>
                   {{#if ../admin}}<div class="d-flex justify-content-center">
-                    <a href="/users/{{id}}/edit" class="button-main smaller-btn learn-more"><span>Edit</span></a>
+                    <a href="/user/{{id}}/edit" class="button-main smaller-btn learn-more"><span>Edit</span></a>
                     <form action="/user/{{id}}/delete" method="post">
                     <button class="button-main smaller-btn" type="submit"><span>Delete</span></button>
                   </form>
