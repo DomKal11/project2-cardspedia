@@ -28,7 +28,8 @@ router.post("/create-game", (req, res, next) => {
     rules,
     createdBy,
   } = req.body;
-
+  const returnedUser = req.session.user;
+  
   if (
     !gameName ||
     !numberOfPlayers ||
@@ -40,6 +41,7 @@ router.post("/create-game", (req, res, next) => {
     res.render("game/create-game", {
       errorMessage:
         "Please make sure you complete all fields before submitting your game",
+        user: returnedUser,
     });
     return;
   }
