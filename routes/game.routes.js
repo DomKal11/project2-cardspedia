@@ -245,7 +245,12 @@ router.get("/game-library/:id/favorite-games", (req, res, next) => {
         .limit(6)
         .then((userFromDB) => {
           console.log(userFromDB);
-          res.render("user/favorites", { user: userFromDB, pages, page, userId });
+          res.render("user/favorites", {
+            user: userFromDB,
+            pages,
+            page,
+            userId,
+          });
         })
         .catch((err) =>
           console.log(`Error while getting the games from the DB: ${err}`)
@@ -306,21 +311,25 @@ router.get("/ranked-by-votes", (req, res, next) => {
   const pages = [];
 
   let length;
-  Game.find().then((gamesFromDB) => {
-    length = Math.ceil(gamesFromDB.length / 6);
-    for (let i = 0; i < length; i++) {
-      pages.push(i + 1);
-    }
-    return pages;
-  });
   Game.find()
-    .populate("createdBy")
-    .skip((page - 1) * 6)
-    .limit(6)
-    .sort({ numberOfVotes: -1 })
     .then((gamesFromDB) => {
-      console.log(length);
-      res.render("game/game-library", { games: gamesFromDB, pages, page });
+      length = Math.ceil(gamesFromDB.length / 6);
+      for (let i = 0; i < length; i++) {
+        pages.push(i + 1);
+      }
+
+      Game.find()
+        .populate("createdBy")
+        .skip((page - 1) * 6)
+        .limit(6)
+        .sort({ numberOfVotes: -1 })
+        .then((gamesFromDB) => {
+          console.log(length);
+          res.render("game/game-library", { games: gamesFromDB, pages, page });
+        })
+        .catch((err) =>
+          console.log(`Error while getting the games from the DB: ${err}`)
+        );
     })
     .catch((err) =>
       console.log(`Error while getting the games from the DB: ${err}`)
