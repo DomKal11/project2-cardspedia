@@ -11,7 +11,7 @@
                   src="{{picture}}"
                   class="card-img-top"
                   alt="{{gameName}}"
-                  onerror="this.src='../../images/card_games_background.jpg'"
+                  onerror="this.src='../../../images/card_games_background.jpg'"
                 /></a>
               <div class="card-body">
                 <h5 class="card-title">{{gameName}}</h5>
@@ -39,7 +39,7 @@
         {{pages.length}}
         pages</p>
       <div class="page-menu">
-        {{#each pages}}<a class="page" href="/game-library/?page={{this}}">Page
+        {{#each pages}}<a class="page" href="/game-library/{{../userId}}/my-games/?page={{this}}">Page
             {{this}}</a>{{/each}}
       </div>
 
