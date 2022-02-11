@@ -6,10 +6,13 @@
 <div class="formtile">
     <div class="col-md-3 formbg">
       <h2>Change picture</h2>
-      <img src="{{userInSession.picture}}" class="card-img-top" alt="{{userInSession.username}}"
+      <br>
+      <img src="{{userInSession.picture}}" class="card-img-top img-edit" alt="{{userInSession.username}}"
             onerror="this.src='../images/default-user.png'">
       <form action="/changeUserPic/{{userInSession._id}}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
+          <br>
+          <br>
           <label>New image:
             <input
               class="form-control"
@@ -18,6 +21,7 @@
               class="profile-pic"
             />
           </label>
+          <br>
         </div>
         <div align="center"><button class="button-main" type="submit"><span>Change picture</span></button></div>
         {{#if errorMessage}}
